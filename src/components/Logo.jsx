@@ -13,21 +13,21 @@ const Logo = ({ size = "medium", showText = true, className = "" }) => {
       <div className="relative">
         {/* Primary logo - SVG for perfect scaling */}
         <img
-          src="/resolute-solutions-high-resolution-logo-transparent 2.svg"
+          src="/resolute-solutions-high-resolution-logo-transparent-2.svg"
           alt="Resolute Solutions Logo"
           className={`${sizes[size]} object-cover rounded-full border-2 border-blue-200 shadow-md transform group-hover:scale-105 transition-all duration-300 group-hover:shadow-lg group-hover:border-blue-300`}
           onError={(e) => {
             // Fallback to PNG if SVG fails
             e.target.src =
-              "/resolute-solutions-high-resolution-logo-transparent 2.png";
+              "/resolute-solutions-high-resolution-logo-transparent-2.png";
             e.target.onerror = (e2) => {
               // Fallback to grayscale SVG if main PNG fails
               e2.target.src =
-                "/resolute-solutions-high-resolution-logo-grayscale-transparent 2.svg";
+                "/resolute-solutions-high-resolution-logo-grayscale-transparent-2.svg";
               e2.target.onerror = (e3) => {
                 // Final fallback to grayscale PNG
                 e3.target.src =
-                  "/resolute-solutions-high-resolution-logo-grayscale-transparent 2.png";
+                  "/resolute-solutions-high-resolution-logo-grayscale-transparent-2.png";
                 e3.target.onerror = (e4) => {
                   // Ultimate fallback to text logo if all images fail
                   e4.target.style.display = "none";
