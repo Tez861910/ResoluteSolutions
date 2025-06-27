@@ -1,11 +1,21 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
+import { resolve } from "path";
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
   const isDev = command === "serve";
   const isProd = command === "build";
+
+  // Load environment variables with VITE_ prefix
+  const env = loadEnv(mode, resolve(), "VITE_");
+
+  console.log("🔧 Vite Config Debug:");
+  console.log("Mode:", mode);
+  console.log("Command:", command);
+  console.log("Is Production:", isProd);
+  console.log("Environment variables loaded:", Object.keys(env));
 
   return {
     plugins: [
@@ -16,6 +26,31 @@ export default defineConfig(({ command }) => {
         jsxRuntime: "automatic",
       }),
     ],
+
+    // Define environment variables and constants
+    define: {
+      __DEV__: JSON.stringify(isDev),
+      __PROD__: JSON.stringify(isProd),
+      __APP_VERSION__: JSON.stringify("1.0.0"),
+      // Inject EmailJS environment variables for production
+      ...(isProd && {
+        "import.meta.env.VITE_EMAILJS_SERVICE_ID": JSON.stringify(
+          env.VITE_EMAILJS_SERVICE_ID
+        ),
+        "import.meta.env.VITE_EMAILJS_TEMPLATE_ID": JSON.stringify(
+          env.VITE_EMAILJS_TEMPLATE_ID
+        ),
+        "import.meta.env.VITE_EMAILJS_PUBLIC_KEY": JSON.stringify(
+          env.VITE_EMAILJS_PUBLIC_KEY
+        ),
+        "import.meta.env.VITE_CONTACT_EMAIL": JSON.stringify(
+          env.VITE_CONTACT_EMAIL
+        ),
+        "import.meta.env.VITE_WEBSITE_URL": JSON.stringify(
+          env.VITE_WEBSITE_URL
+        ),
+      }),
+    },
 
     // Path resolution for cleaner imports
     resolve: {
@@ -141,13 +176,6 @@ export default defineConfig(({ command }) => {
       open: true,
       cors: true,
       strictPort: false,
-    },
-
-    // Environment variables
-    define: {
-      __DEV__: JSON.stringify(isDev),
-      __PROD__: JSON.stringify(isProd),
-      __APP_VERSION__: JSON.stringify("1.0.0"),
     },
 
     // Public directory configuration
