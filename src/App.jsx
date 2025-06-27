@@ -10,8 +10,11 @@ import RiskManagementAnalysis from "./pages/RiskManagementAnalysis";
 import ProjectManagement from "./pages/ProjectManagement";
 
 function App() {
+  // Use basename only in production for GitHub Pages
+  const basename = import.meta.env.PROD ? "/ResoluteSolutions" : "";
+
   return (
-    <Router>
+    <Router basename={basename}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
