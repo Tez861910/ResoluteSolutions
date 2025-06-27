@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
+import logoImage from "/resolute-solutions-high-resolution-logo-transparent-2.png";
 
 const Home = () => {
   const verticals = [
@@ -67,11 +68,25 @@ const Home = () => {
             <div className="inline-flex items-center justify-center mb-8">
               <div className="relative">
                 <img
-                  src="/resolute-solutions-high-resolution-logo-transparent-2.png"
+                  src={logoImage}
                   alt="Resolute Solutions Logo"
                   className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40 object-cover rounded-full border-4 border-white/30 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-3xl hover:border-white/50"
+                  onError={(e) => {
+                    // Fallback to text logo if image fails
+                    e.target.style.display = "none";
+                    e.target.nextSibling.nextSibling.style.display = "flex";
+                  }}
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 blur-sm"></div>
+                {/* Fallback RS logo if image fails to load */}
+                <div
+                  className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-3xl border-4 border-white/30"
+                  style={{ display: "none" }}
+                >
+                  <span className="text-white font-bold tracking-tight text-2xl sm:text-4xl lg:text-5xl">
+                    RS
+                  </span>
+                </div>
               </div>
             </div>
             <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">
