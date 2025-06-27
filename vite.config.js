@@ -17,6 +17,32 @@ export default defineConfig(({ command, mode }) => {
   console.log("Is Production:", isProd);
   console.log("Environment variables loaded:", Object.keys(env));
 
+  if (isProd) {
+    console.log("🚀 Production build - checking for EmailJS configuration:");
+    console.log(
+      "  Service ID:",
+      env.VITE_EMAILJS_SERVICE_ID ? "✅ Found" : "❌ Missing"
+    );
+    console.log(
+      "  Template ID:",
+      env.VITE_EMAILJS_TEMPLATE_ID ? "✅ Found" : "❌ Missing"
+    );
+    console.log(
+      "  Public Key:",
+      env.VITE_EMAILJS_PUBLIC_KEY ? "✅ Found" : "❌ Missing"
+    );
+
+    if (
+      !env.VITE_EMAILJS_SERVICE_ID ||
+      !env.VITE_EMAILJS_TEMPLATE_ID ||
+      !env.VITE_EMAILJS_PUBLIC_KEY
+    ) {
+      console.warn(
+        "⚠️  EmailJS configuration missing - contact forms will show fallback message"
+      );
+    }
+  }
+
   return {
     plugins: [
       react({
@@ -35,19 +61,19 @@ export default defineConfig(({ command, mode }) => {
       // Inject EmailJS environment variables for production
       ...(isProd && {
         "import.meta.env.VITE_EMAILJS_SERVICE_ID": JSON.stringify(
-          env.VITE_EMAILJS_SERVICE_ID
+          env.VITE_EMAILJS_SERVICE_ID || ""
         ),
         "import.meta.env.VITE_EMAILJS_TEMPLATE_ID": JSON.stringify(
-          env.VITE_EMAILJS_TEMPLATE_ID
+          env.VITE_EMAILJS_TEMPLATE_ID || ""
         ),
         "import.meta.env.VITE_EMAILJS_PUBLIC_KEY": JSON.stringify(
-          env.VITE_EMAILJS_PUBLIC_KEY
+          env.VITE_EMAILJS_PUBLIC_KEY || ""
         ),
         "import.meta.env.VITE_CONTACT_EMAIL": JSON.stringify(
-          env.VITE_CONTACT_EMAIL
+          env.VITE_CONTACT_EMAIL || "resolutesolutions@hotmail.com"
         ),
         "import.meta.env.VITE_WEBSITE_URL": JSON.stringify(
-          env.VITE_WEBSITE_URL
+          env.VITE_WEBSITE_URL || "https://resolutesolutions.github.io"
         ),
       }),
     },
