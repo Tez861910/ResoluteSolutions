@@ -336,7 +336,7 @@ const ContactModal = ({
     const errors = validateField(name, value);
     setFieldErrors((prev) => {
       const newErrors = { ...prev };
-      
+
       if (Object.keys(errors).length === 0) {
         // Remove the field from errors if no errors
         delete newErrors[name];
@@ -344,7 +344,7 @@ const ContactModal = ({
         // Add the error if there are errors
         Object.assign(newErrors, errors);
       }
-      
+
       return newErrors;
     });
   };
@@ -473,11 +473,21 @@ const ContactModal = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Real-time validation on every change for required fields
-    if (['name', 'email', 'company', 'jobTitle', 'currentChallenges', 'expectedOutcomes', 'message'].includes(name)) {
+    if (
+      [
+        "name",
+        "email",
+        "company",
+        "jobTitle",
+        "currentChallenges",
+        "expectedOutcomes",
+        "message",
+      ].includes(name)
+    ) {
       const errors = validateField(name, value);
       setFieldErrors((prev) => {
         const newErrors = { ...prev };
-        
+
         if (Object.keys(errors).length === 0) {
           // Remove the field from errors if no errors
           delete newErrors[name];
@@ -485,7 +495,7 @@ const ContactModal = ({
           // Add the error if there are errors
           Object.assign(newErrors, errors);
         }
-        
+
         return newErrors;
       });
     } else {
@@ -658,7 +668,9 @@ const ContactModal = ({
     formData.currentChallenges.trim() &&
     formData.expectedOutcomes.trim() &&
     formData.message.trim() &&
-    Object.entries(fieldErrors).filter(([, value]) => value !== undefined && value !== null).length === 0;
+    Object.entries(fieldErrors).filter(
+      ([, value]) => value !== undefined && value !== null
+    ).length === 0;
 
   // Debug logging - ENHANCED DEBUG for button issue
   if (currentStep === 2) {
@@ -666,35 +678,89 @@ const ContactModal = ({
     console.log("canSubmit:", canSubmit);
     console.log("isSubmitting:", isSubmitting);
     console.log("Button should be enabled:", canSubmit && !isSubmitting);
-    
+
     // Check each individual condition
     console.log("Individual canSubmit conditions:");
-    console.log("  formData.name.trim():", !!formData.name.trim(), `"${formData.name.trim()}" (length: ${formData.name.trim().length})`);
-    console.log("  formData.email.trim():", !!formData.email.trim(), `"${formData.email.trim()}" (length: ${formData.email.trim().length})`);
-    console.log("  formData.company.trim():", !!formData.company.trim(), `"${formData.company.trim()}" (length: ${formData.company.trim().length})`);
-    console.log("  formData.jobTitle.trim():", !!formData.jobTitle.trim(), `"${formData.jobTitle.trim()}" (length: ${formData.jobTitle.trim().length})`);
-    console.log("  formData.currentChallenges.trim():", !!formData.currentChallenges.trim(), `"${formData.currentChallenges.trim()}" (length: ${formData.currentChallenges.trim().length})`);
-    console.log("  formData.expectedOutcomes.trim():", !!formData.expectedOutcomes.trim(), `"${formData.expectedOutcomes.trim()}" (length: ${formData.expectedOutcomes.trim().length})`);
-    console.log("  formData.message.trim():", !!formData.message.trim(), `"${formData.message.trim()}" (length: ${formData.message.trim().length})`);
-    
-    const validErrors = Object.entries(fieldErrors).filter(([, value]) => value !== undefined && value !== null);
+    console.log(
+      "  formData.name.trim():",
+      !!formData.name.trim(),
+      `"${formData.name.trim()}" (length: ${formData.name.trim().length})`
+    );
+    console.log(
+      "  formData.email.trim():",
+      !!formData.email.trim(),
+      `"${formData.email.trim()}" (length: ${formData.email.trim().length})`
+    );
+    console.log(
+      "  formData.company.trim():",
+      !!formData.company.trim(),
+      `"${formData.company.trim()}" (length: ${formData.company.trim().length})`
+    );
+    console.log(
+      "  formData.jobTitle.trim():",
+      !!formData.jobTitle.trim(),
+      `"${formData.jobTitle.trim()}" (length: ${
+        formData.jobTitle.trim().length
+      })`
+    );
+    console.log(
+      "  formData.currentChallenges.trim():",
+      !!formData.currentChallenges.trim(),
+      `"${formData.currentChallenges.trim()}" (length: ${
+        formData.currentChallenges.trim().length
+      })`
+    );
+    console.log(
+      "  formData.expectedOutcomes.trim():",
+      !!formData.expectedOutcomes.trim(),
+      `"${formData.expectedOutcomes.trim()}" (length: ${
+        formData.expectedOutcomes.trim().length
+      })`
+    );
+    console.log(
+      "  formData.message.trim():",
+      !!formData.message.trim(),
+      `"${formData.message.trim()}" (length: ${formData.message.trim().length})`
+    );
+
+    const validErrors = Object.entries(fieldErrors).filter(
+      ([, value]) => value !== undefined && value !== null
+    );
     console.log("  No fieldErrors:", validErrors.length === 0);
-    
+
     console.log("fieldErrors object:", fieldErrors);
     console.log("fieldErrors keys:", Object.keys(fieldErrors));
     console.log("Valid fieldErrors entries:", validErrors);
-    
+
     // Check if minimum length requirements are met
     console.log("Minimum length checks:");
-    console.log("  currentChallenges >= 20:", formData.currentChallenges.trim().length >= 20);
-    console.log("  expectedOutcomes >= 20:", formData.expectedOutcomes.trim().length >= 20);
+    console.log(
+      "  currentChallenges >= 20:",
+      formData.currentChallenges.trim().length >= 20
+    );
+    console.log(
+      "  expectedOutcomes >= 20:",
+      formData.expectedOutcomes.trim().length >= 20
+    );
     console.log("  message >= 10:", formData.message.trim().length >= 10);
-    
+
     // Test validation for each required field right now
     console.log("Current validation results:");
-    ['name', 'email', 'company', 'jobTitle', 'currentChallenges', 'expectedOutcomes', 'message'].forEach(field => {
+    [
+      "name",
+      "email",
+      "company",
+      "jobTitle",
+      "currentChallenges",
+      "expectedOutcomes",
+      "message",
+    ].forEach((field) => {
       const currentErrors = validateField(field, formData[field]);
-      console.log(`  ${field}:`, Object.keys(currentErrors).length === 0 ? "✅ VALID" : "❌ INVALID", currentErrors);
+      console.log(
+        `  ${field}:`,
+        Object.keys(currentErrors).length === 0 ? "✅ VALID" : "❌ INVALID",
+        currentErrors
+      );
     });
   }
 

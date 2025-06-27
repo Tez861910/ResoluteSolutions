@@ -1,5 +1,50 @@
 # EmailJS Configuration Setup
 
+## ✅ Quick Status Check
+
+**Current Configuration Status:**
+
+- ✅ .env file exists with EmailJS values
+- ✅ Environment variables properly prefixed with VITE\_
+- ✅ ContactModal.jsx updated to use environment variables
+- ✅ ContactForm.jsx updated to use environment variables
+
+## 🚨 Troubleshooting "Email service not configured" Error
+
+### Issue: Environment variables not loading
+
+**Solution 1: Restart Development Server**
+
+```bash
+# Stop the server (Ctrl+C) then restart:
+npm run dev
+```
+
+**Solution 2: Verify .env file location**
+
+- Ensure `.env` file is in the ROOT directory (same level as package.json)
+- NOT in src/ or public/ folders
+
+**Solution 3: Check .env file format**
+
+```bash
+# Correct format (no spaces around =):
+VITE_EMAILJS_SERVICE_ID=service_bjtql8y
+VITE_EMAILJS_TEMPLATE_ID=template_nqkz24p
+VITE_EMAILJS_PUBLIC_KEY=y44jGUHQnuTrO-l1W
+
+# Incorrect (don't use quotes or spaces):
+VITE_EMAILJS_SERVICE_ID = "service_bjtql8y"
+```
+
+**Solution 4: Browser Console Check**
+Open browser console and look for debug messages:
+
+```
+🧪 Environment Variables Test:
+🔧 ContactForm EmailJS Debug:
+```
+
 ## Step 1: Create EmailJS Account
 
 1. Go to https://www.emailjs.com/
