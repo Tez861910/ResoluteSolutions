@@ -67,17 +67,17 @@ const Home = () => {
             <div className="inline-flex items-center justify-center mb-8">
               <div className="relative">
                 <img
-                  src="/resolute-solutions-high-resolution-logo-transparent 2.svg"
+                  src="/resolute-solutions-high-resolution-logo-transparent-2.png"
                   alt="Resolute Solutions Logo"
                   className="h-24 w-24 sm:h-32 sm:w-32 lg:h-40 lg:w-40 object-cover rounded-full border-4 border-white/30 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-3xl hover:border-white/50"
                   onError={(e) => {
                     // Fallback to PNG if SVG fails
                     e.target.src =
-                      "/resolute-solutions-high-resolution-logo-transparent 2.png";
+                      "/resolute-solutions-high-resolution-logo-transparent-2.png";
                     e.target.onerror = (e2) => {
                       // Final fallback to grayscale SVG
                       e2.target.src =
-                        "/resolute-solutions-high-resolution-logo-grayscale-transparent 2.svg";
+                        "/resolute-solutions-high-resolution-logo-grayscale-transparent-2.svg";
                     };
                   }}
                 />
