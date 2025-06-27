@@ -154,7 +154,7 @@ export default defineConfig(({ command }) => {
     publicDir: "public",
 
     // Base URL configuration (useful for deployment)
-    base: "/",
+    base: isProd ? "/ResoluteSolutions/" : "/",
 
     // Asset processing
     assetsInclude: ["**/*.woff", "**/*.woff2"],
