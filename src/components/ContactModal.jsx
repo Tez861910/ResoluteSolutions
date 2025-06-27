@@ -552,7 +552,8 @@ const ContactModal = ({
       if (!serviceId || !templateId || !publicKey) {
         setIsSubmitting(false);
         alert(
-          "We apologize, but our contact form is temporarily unavailable. Please email us directly at resolutesolutions@hotmail.com or try again later."
+          "Our contact form is temporarily unavailable. Please email us directly at resolutesolutions@hotmail.com or try again later.\n\n" +
+            "For immediate assistance, you can also reach out through our social media channels."
         );
         return;
       }
