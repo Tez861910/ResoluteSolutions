@@ -155,19 +155,19 @@ const Layout = ({ children }) => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
-          <div className="py-16 lg:py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="py-12 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Company Section */}
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-1">
                 <div className="pr-0 lg:pr-8">
-                  <div className="mb-8">
+                  <div className="mb-6">
                     <Logo size="large" showText={true} className="text-white" />
                   </div>
                   <p className="text-slate-300 text-lg leading-relaxed mb-6 max-w-lg">
                     Empowering enterprise transformation through strategic
                     innovation across our specialized domains of excellence.
                   </p>
-                  <div className="bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/30 rounded-lg p-4 mb-8 max-w-lg">
+                  <div className="bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/30 rounded-lg p-4 mb-6 max-w-lg">
                     <p className="text-red-300 text-lg font-bold italic text-center">
                       "The Right Choice for your business transformation"
                     </p>
@@ -203,6 +203,32 @@ const Layout = ({ children }) => {
                     </a>
                     <a
                       href="#"
+                      className="group bg-gray-800/60 backdrop-blur-sm p-3 rounded-xl border border-gray-700/60 hover:border-blue-600/60 hover:bg-blue-600/10 hover:shadow-lg hover:shadow-blue-600/20 transition-all duration-300"
+                      aria-label="Facebook"
+                    >
+                      <svg
+                        className="h-5 w-5 text-gray-300 group-hover:text-blue-500 transition-colors"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="#"
+                      className="group bg-gray-800/60 backdrop-blur-sm p-3 rounded-xl border border-gray-700/60 hover:border-pink-400/60 hover:bg-pink-500/10 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300"
+                      aria-label="Instagram"
+                    >
+                      <svg
+                        className="h-5 w-5 text-gray-300 group-hover:text-pink-400 transition-colors"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12.017 0C8.396 0 7.896.013 6.688.072 5.48.132 4.634.333 3.892.63a5.89 5.89 0 0 0-2.131 1.388A5.89 5.89 0 0 0 .373 4.15C.076 4.892-.125 5.738-.185 6.946-.244 8.154-.257 8.654-.257 12.274s.013 4.12.072 5.328c.06 1.208.261 2.054.558 2.796a5.89 5.89 0 0 0 1.388 2.131 5.89 5.89 0 0 0 2.131 1.388c.742.297 1.588.498 2.796.558 1.208.059 1.708.072 5.328.072s4.12-.013 5.328-.072c1.208-.06 2.054-.261 2.796-.558a5.89 5.89 0 0 0 2.131-1.388 5.89 5.89 0 0 0 1.388-2.131c.297-.742.498-1.588.558-2.796.059-1.208.072-1.708.072-5.328s-.013-4.12-.072-5.328c-.06-1.208-.261-2.054-.558-2.796a5.89 5.89 0 0 0-1.388-2.131A5.89 5.89 0 0 0 19.708.63C18.966.333 18.12.132 16.912.072 15.704.013 15.204 0 11.584 0h.433zm-1.068 2.184c.308-.006.646-.006 1.068-.006 3.6 0 4.028.011 5.45.065 1.315.06 2.03.278 2.506.463.63.245 1.08.538 1.552 1.01s.765.922 1.01 1.552c.185.476.403 1.19.463 2.506.054 1.422.065 1.85.065 5.45s-.011 4.028-.065 5.45c-.06 1.315-.278 2.03-.463 2.506-.245.63-.538 1.08-1.01 1.552s-.922.765-1.552 1.01c-.476.185-1.19.403-2.506.463-1.422.054-1.85.065-5.45.065s-4.028-.011-5.45-.065c-1.315-.06-2.03-.278-2.506-.463a4.172 4.172 0 0 1-1.552-1.01 4.172 4.172 0 0 1-1.01-1.552c-.185-.476-.403-1.19-.463-2.506-.054-1.422-.065-1.85-.065-5.45s.011-4.028.065-5.45c.06-1.315.278-2.03.463-2.506.245-.63.538-1.08 1.01-1.552s.922-.765 1.552-1.01c.476-.185 1.19-.403 2.506-.463 1.244-.056 1.725-.07 4.382-.073v.003zm-1.013 3.556a6.334 6.334 0 1 0 6.334 6.334 6.334 6.334 0 0 0-6.334-6.334zm0 10.445a4.111 4.111 0 1 1 4.111-4.111 4.111 4.111 0 0 1-4.111 4.111zm6.612-10.671a1.48 1.48 0 1 1-1.48-1.48 1.48 1.48 0 0 1 1.48 1.48z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="#"
                       className="group bg-gray-800/60 backdrop-blur-sm p-3 rounded-xl border border-gray-700/60 hover:border-green-400/60 hover:bg-green-500/10 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300"
                       aria-label="WhatsApp"
                     >
@@ -218,49 +244,10 @@ const Layout = ({ children }) => {
                 </div>
               </div>
 
-              {/* Verticals Section */}
-              <div className="lg:col-span-3">
-                <div className="h-full">
-                  <h4 className="text-xl font-bold text-white mb-8 flex items-center">
-                    <span className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    Our Verticals
-                  </h4>
-                  <div className="space-y-3">
-                    {verticals.map((vertical) => (
-                      <div key={vertical.path} className="group">
-                        <Link
-                          to={vertical.path}
-                          className="flex items-center p-4 bg-gray-800/40 backdrop-blur-sm rounded-xl border border-gray-700/60 hover:border-blue-400/60 hover:bg-gray-700/40 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 group"
-                        >
-                          <span className="text-2xl mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                            {vertical.icon}
-                          </span>
-                          <span className="text-gray-300 group-hover:text-white font-medium transition-colors">
-                            {vertical.name}
-                          </span>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
               {/* Contact Section */}
-              <div className="lg:col-span-4">
+              <div className="lg:col-span-1">
                 <div className="h-full">
-                  <h4 className="text-xl font-bold text-white mb-8 flex items-center">
+                  <h4 className="text-xl font-bold text-white mb-6 flex items-center">
                     <span className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
                       <svg
                         className="w-5 h-5 text-white"
@@ -274,139 +261,145 @@ const Layout = ({ children }) => {
                     Contact Information
                   </h4>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Email Contacts */}
-                    <div className="sm:col-span-2 bg-gray-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/60 hover:border-blue-400/40 transition-all duration-300">
-                      <h5 className="text-blue-300 font-semibold mb-4 flex items-center">
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                        </svg>
-                        Email Contacts
-                      </h5>
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/50">
-                          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider font-medium">
-                            Ingredient Sourcing
-                          </p>
-                          <a
-                            href="mailto:resolutesolutions.connect@gmail.com"
-                            className="text-blue-300 hover:text-blue-200 transition-colors text-sm block break-all hover:underline"
-                          >
-                            resolutesolutions.connect@gmail.com
-                          </a>
-                        </div>
-                        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/50">
-                          <p className="text-xs text-gray-400 mb-2 uppercase tracking-wider font-medium">
-                            Engineering & Project Management
-                          </p>
-                          <a
-                            href="mailto:resolutesolutions@hotmail.com"
-                            className="text-blue-300 hover:text-blue-200 transition-colors text-sm block hover:underline"
-                          >
-                            resolutesolutions@hotmail.com
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Phone Numbers */}
-                    <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/60 hover:border-green-400/40 transition-all duration-300">
-                      <h5 className="text-green-300 font-semibold mb-4 flex items-center">
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                        </svg>
-                        Phone Numbers
-                      </h5>
-                      <div className="space-y-3">
-                        <a
-                          href="tel:+918073570073"
-                          className="flex items-center justify-between bg-gray-900/50 rounded-lg p-3 border border-gray-600/50 text-green-300 hover:text-green-200 hover:border-green-400/50 transition-all duration-300 group"
-                        >
-                          <span className="text-sm font-medium">
-                            +91 8073570073
-                          </span>
+                  <div className="space-y-4">
+                    {/* Top Row: Email Contacts and Phone Numbers */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Email Contacts */}
+                      <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/60 hover:border-blue-400/40 transition-all duration-300">
+                        <h5 className="text-blue-300 font-semibold mb-3 flex items-center text-sm">
                           <svg
-                            className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="w-4 h-4 mr-2"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                           </svg>
-                        </a>
-                        <a
-                          href="tel:+919741111714"
-                          className="flex items-center justify-between bg-gray-900/50 rounded-lg p-3 border border-gray-600/50 text-green-300 hover:text-green-200 hover:border-green-400/50 transition-all duration-300 group"
-                        >
-                          <span className="text-sm font-medium">
-                            +91 9741111714
-                          </span>
-                          <svg
-                            className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Address */}
-                    <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/60 hover:border-purple-400/40 transition-all duration-300">
-                      <h5 className="text-purple-300 font-semibold mb-4 flex items-center">
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        Office Address
-                      </h5>
-                      <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/50">
-                        <address className="text-gray-300 text-sm not-italic leading-relaxed">
-                          <div className="font-medium text-white mb-1">
-                            #9, 3rd Cross, Sir MV Layout
+                          Email Contacts
+                        </h5>
+                        <div className="space-y-2">
+                          <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-600/50">
+                            <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-medium">
+                              Ingredient Sourcing
+                            </p>
+                            <a
+                              href="mailto:resolutesolutions.connect@gmail.com"
+                              className="text-blue-300 hover:text-blue-200 transition-colors text-xs block break-all hover:underline"
+                            >
+                              resolutesolutions.connect@gmail.com
+                            </a>
                           </div>
-                          <div>Hesaraghatta Road, Bagalagunte</div>
-                          <div>Bengaluru 560073, India</div>
-                        </address>
+                          <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-600/50">
+                            <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-medium">
+                              Engineering & Project Management
+                            </p>
+                            <a
+                              href="mailto:resolutesolutions@hotmail.com"
+                              className="text-blue-300 hover:text-blue-200 transition-colors text-xs block hover:underline"
+                            >
+                              resolutesolutions@hotmail.com
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Phone Numbers */}
+                      <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/60 hover:border-green-400/40 transition-all duration-300">
+                        <h5 className="text-green-300 font-semibold mb-3 flex items-center text-sm">
+                          <svg
+                            className="w-4 h-4 mr-2"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                          </svg>
+                          Phone Numbers
+                        </h5>
+                        <div className="space-y-2">
+                          <a
+                            href="tel:+918073570073"
+                            className="flex items-center justify-between bg-gray-900/50 rounded-lg p-3 border border-gray-600/50 text-green-300 hover:text-green-200 hover:border-green-400/50 transition-all duration-300 group"
+                          >
+                            <span className="text-xs font-medium">
+                              +91 8073570073
+                            </span>
+                            <svg
+                              className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                          </a>
+                          <a
+                            href="tel:+919741111714"
+                            className="flex items-center justify-between bg-gray-900/50 rounded-lg p-3 border border-gray-600/50 text-green-300 hover:text-green-200 hover:border-green-400/50 transition-all duration-300 group"
+                          >
+                            <span className="text-xs font-medium">
+                              +91 9741111714
+                            </span>
+                            <svg
+                              className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                          </a>
+                        </div>
                       </div>
                     </div>
 
-                    {/* GST */}
-                    <div className="sm:col-span-2 bg-gray-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/60 hover:border-yellow-400/40 transition-all duration-300">
-                      <h5 className="text-yellow-300 font-semibold mb-4 flex items-center">
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        GST Number
-                      </h5>
-                      <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/50">
-                        <p className="text-yellow-300 text-lg font-mono tracking-wider text-center bg-gradient-to-r from-yellow-400/20 to-amber-400/20 px-4 py-2 rounded-lg border border-yellow-400/30">
-                          29AHXPJ7565P1ZY
-                        </p>
+                    {/* Bottom Row: Address and GST */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Address */}
+                      <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/60 hover:border-purple-400/40 transition-all duration-300">
+                        <h5 className="text-purple-300 font-semibold mb-3 flex items-center text-sm">
+                          <svg
+                            className="w-4 h-4 mr-2"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          Office Address
+                        </h5>
+                        <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-600/50">
+                          <address className="text-gray-300 text-xs not-italic leading-relaxed">
+                            <div className="font-medium text-white mb-1">
+                              #9, 3rd Cross, Sir MV Layout
+                            </div>
+                            <div>Hesaraghatta Road, Bagalagunte</div>
+                            <div>Bengaluru 560073, India</div>
+                          </address>
+                        </div>
+                      </div>
+
+                      {/* GST */}
+                      <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/60 hover:border-yellow-400/40 transition-all duration-300">
+                        <h5 className="text-yellow-300 font-semibold mb-3 flex items-center text-sm">
+                          <svg
+                            className="w-4 h-4 mr-2"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          GST Number
+                        </h5>
+                        <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-600/50">
+                          <p className="text-yellow-300 text-xs font-mono tracking-wider text-center bg-gradient-to-r from-yellow-400/20 to-amber-400/20 px-2 py-2 rounded-lg border border-yellow-400/30">
+                            29AHXPJ7565P1ZY
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -417,53 +410,60 @@ const Layout = ({ children }) => {
 
           {/* Footer Bottom */}
           <div className="border-t border-gray-800/60 pt-8 pb-6">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-              {/* Left side - Copyright and legal links */}
-              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
-                <p className="text-gray-400 text-sm font-medium">
-                  &copy; 2025 Resolute Solutions. All rights reserved.
-                </p>
-                <div className="flex space-x-4 text-sm">
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors hover:underline"
-                  >
-                    Privacy Policy
-                  </a>
-                  <span className="text-gray-600">•</span>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors hover:underline"
-                  >
-                    Terms of Service
-                  </a>
-                  <span className="text-gray-600">•</span>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors hover:underline"
-                  >
-                    Cookie Policy
-                  </a>
-                </div>
+            <div className="flex flex-col items-center space-y-4">
+              {/* Top - Legal links */}
+              <div className="flex items-baseline justify-center space-x-4 text-sm">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors hover:underline font-medium"
+                >
+                  Privacy Policy
+                </a>
+                <span className="text-gray-600 leading-none">•</span>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors hover:underline font-medium"
+                >
+                  Terms of Service
+                </a>
+                <span className="text-gray-600 leading-none">•</span>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors hover:underline font-medium"
+                >
+                  Cookie Policy
+                </a>
               </div>
 
-              {/* Right side - Made in Bengaluru */}
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
-                <span>Crafted with</span>
-                <svg
-                  className="w-4 h-4 text-red-500 animate-pulse"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>in</span>
-                <span className="text-orange-400 font-semibold">Bengaluru</span>
-                <span className="text-orange-400">🇮🇳</span>
+              {/* Bottom row - Copyright and Made in Bengaluru */}
+              <div className="flex flex-col sm:flex-row justify-between items-center w-full space-y-2 sm:space-y-0">
+                {/* Left - Copyright */}
+                <div className="flex items-center">
+                  <p className="text-gray-400 text-sm font-medium">
+                    &copy; 2025 Resolute Solutions. All rights reserved.
+                  </p>
+                </div>
+
+                {/* Right - Made in Bengaluru */}
+                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                  <span>Crafted with</span>
+                  <svg
+                    className="w-4 h-4 text-red-500 animate-pulse"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span>in</span>
+                  <span className="text-orange-400 font-semibold">
+                    Bengaluru
+                  </span>
+                  <span className="text-orange-400">🇮🇳</span>
+                </div>
               </div>
             </div>
           </div>
