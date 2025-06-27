@@ -2,6 +2,8 @@
 
 A modern, professional business website showcasing Resolute Solutions' expertise across four specialized business verticals. Built with cutting-edge web technologies to deliver exceptional user experience and professional presentation.
 
+🌐 **Live Website**: [https://tez861910.github.io/ResoluteSolutions/](https://tez861910.github.io/ResoluteSolutions/)
+
 ## 🏢 About Resolute Solutions
 
 **Resolute Solutions** is a leading business consultancy specializing in enterprise transformation through strategic innovation. Our tagline **"The Right Choice"** reflects our commitment to delivering exceptional results across four core domains:
