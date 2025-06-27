@@ -9,21 +9,25 @@ A modern, professional business website showcasing Resolute Solutions' expertise
 **Resolute Solutions** is a leading business consultancy specializing in enterprise transformation through strategic innovation. Our tagline **"The Right Choice"** reflects our commitment to delivering exceptional results across four core domains:
 
 ### 🏠 House Keeping Products
+
 - Product lifecycle management and retention solutions
 - Portfolio optimization for maximum ROI
 - Quality assurance and compliance management
 
 ### 🌾 Ingredient Sourcing
+
 - Strategic supply chain optimization and procurement
 - Sustainable and ethical sourcing practices
 - Vendor management and quality control
 
 ### 📊 Risk Management Analysis
+
 - Comprehensive risk assessment and mitigation strategies
 - Compliance management and regulatory adherence
 - Financial analysis and market risk evaluation
 
 ### 🎯 Project Management
+
 - End-to-end project orchestration and delivery
 - Resource management and timeline optimization
 - Quality delivery with proven methodologies
@@ -63,11 +67,13 @@ npm run lint       # Code linting
 ## 📞 Contact Information
 
 **Business Contacts:**
+
 - Engineering & Project Management: resolutesolutions@hotmail.com
 - Ingredient Sourcing: resolutesolutions.connect@gmail.com
 - Phone: +91 8073570073 / 9741111714
 
 **Address:**
+
 ```
 #9, 3rd Cross, Sir MV Layout
 Hesaraghatta Road, Bagalagunte
