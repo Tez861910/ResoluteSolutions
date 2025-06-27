@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
-import logoImage from "/resolute-solutions-high-resolution-logo-transparent-2.png";
+import logoImage from "../assets/resolute-solutions-high-resolution-logo-transparent-2.png";
 
 const Home = () => {
   const verticals = [
