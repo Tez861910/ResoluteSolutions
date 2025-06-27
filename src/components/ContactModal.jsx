@@ -133,6 +133,203 @@ const ContactModal = ({
     return errors;
   };
 
+  // Warning messages for fields that need more content
+  const getFieldWarning = (name, value) => {
+    const trimmedValue = value?.trim() || "";
+
+    switch (name) {
+      case "name":
+        if (trimmedValue.length > 0 && trimmedValue.length < 2) {
+          return "Name must be at least 2 characters";
+        }
+        if (trimmedValue.length >= 2 && !trimmedValue.includes(" ")) {
+          return "Consider including your full name";
+        }
+        break;
+      case "currentChallenges":
+        if (trimmedValue.length > 0 && trimmedValue.length < 20) {
+          return `${20 - trimmedValue.length} more characters needed`;
+        }
+        if (trimmedValue.length >= 20 && trimmedValue.length < 50) {
+          return "Good! Consider adding more detail for better consultation";
+        }
+        break;
+      case "expectedOutcomes":
+        if (trimmedValue.length > 0 && trimmedValue.length < 20) {
+          return `${20 - trimmedValue.length} more characters needed`;
+        }
+        if (trimmedValue.length >= 20 && trimmedValue.length < 50) {
+          return "Good! More specific outcomes help us serve you better";
+        }
+        break;
+      case "message":
+        if (trimmedValue.length > 0 && trimmedValue.length < 10) {
+          return `${10 - trimmedValue.length} more characters needed`;
+        }
+        if (trimmedValue.length >= 10 && trimmedValue.length < 30) {
+          return "Consider adding more details about your project";
+        }
+        break;
+      case "email":
+        if (trimmedValue.length > 0 && !trimmedValue.includes("@")) {
+          return "Don't forget the @ symbol";
+        }
+        if (trimmedValue.includes("@") && !trimmedValue.includes(".")) {
+          return "Email needs a domain (e.g., .com, .org)";
+        }
+        break;
+      case "phone":
+        if (trimmedValue.length > 0 && trimmedValue.length < 10) {
+          return "Phone number seems too short";
+        }
+        break;
+      case "company":
+        if (trimmedValue.length > 0 && trimmedValue.length < 2) {
+          return "Company name seems too short";
+        }
+        break;
+      case "jobTitle":
+        if (trimmedValue.length > 0 && trimmedValue.length < 2) {
+          return "Job title seems too short";
+        }
+        break;
+      case "industry":
+        if (!trimmedValue) {
+          return "Selecting an industry helps us provide relevant solutions";
+        }
+        break;
+      case "companySize":
+        if (!trimmedValue) {
+          return "Company size helps us understand your scale and needs";
+        }
+        break;
+      case "urgency":
+        if (!trimmedValue) {
+          return "Timeline helps us prioritize your request appropriately";
+        }
+        break;
+      case "projectType":
+        if (!trimmedValue) {
+          return "Project type helps us understand your specific needs";
+        }
+        break;
+      case "timeline":
+        if (!trimmedValue) {
+          return "Timeline helps us plan and allocate resources effectively";
+        }
+        break;
+      case "budgetRange":
+        if (!trimmedValue) {
+          return "Budget range helps us propose appropriate solutions (optional)";
+        }
+        break;
+      case "hasWorkedWithConsultants":
+        if (!trimmedValue) {
+          return "Experience info helps us understand your expectations (optional)";
+        }
+        break;
+      case "preferredContactMethod":
+        if (!trimmedValue) {
+          return "Contact preference helps us reach you effectively";
+        }
+        break;
+      default:
+        return null;
+    }
+    return null;
+  };
+
+  // Success messages for well-filled fields
+  const getFieldSuccess = (name, value) => {
+    const trimmedValue = value?.trim() || "";
+
+    switch (name) {
+      case "name":
+        if (trimmedValue.length >= 3 && trimmedValue.includes(" ")) {
+          return "Full name looks good!";
+        }
+        break;
+      case "currentChallenges":
+        if (trimmedValue.length >= 50) {
+          return "Excellent detail! This helps us understand your needs";
+        }
+        break;
+      case "expectedOutcomes":
+        if (trimmedValue.length >= 50) {
+          return "Great! Clear outcomes help us provide better solutions";
+        }
+        break;
+      case "message":
+        if (trimmedValue.length >= 30) {
+          return "Perfect! Detailed information helps us serve you better";
+        }
+        break;
+      case "email":
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) {
+          return "Valid email format";
+        }
+        break;
+      case "phone":
+        if (trimmedValue && /^[+]?[0-9\s\-()]{10,}$/.test(trimmedValue)) {
+          return "Valid phone number";
+        }
+        break;
+      case "company":
+        if (trimmedValue.length >= 2) {
+          return "Company name looks good";
+        }
+        break;
+      case "jobTitle":
+        if (trimmedValue.length >= 3) {
+          return "Job title confirmed";
+        }
+        break;
+      case "industry":
+        if (trimmedValue) {
+          return "Industry selected - helps us tailor our approach";
+        }
+        break;
+      case "companySize":
+        if (trimmedValue) {
+          return "Company size noted - helps us scale our solutions";
+        }
+        break;
+      case "urgency":
+        if (trimmedValue) {
+          return "Timeline noted - helps us prioritize appropriately";
+        }
+        break;
+      case "projectType":
+        if (trimmedValue) {
+          return "Project type noted - helps us tailor our approach";
+        }
+        break;
+      case "timeline":
+        if (trimmedValue) {
+          return "Timeline confirmed - helps us plan resources";
+        }
+        break;
+      case "budgetRange":
+        if (trimmedValue) {
+          return "Budget range noted - helps us propose suitable solutions";
+        }
+        break;
+      case "hasWorkedWithConsultants":
+        if (trimmedValue) {
+          return "Experience noted - helps us tailor our approach";
+        }
+        break;
+      case "preferredContactMethod":
+        if (trimmedValue) {
+          return "Contact preference confirmed";
+        }
+        break;
+      default:
+        return null;
+    }
+    return null;
+  };
+
   // Real-time validation
   const handleFieldBlur = (e) => {
     const { name, value } = e.target;
@@ -142,6 +339,61 @@ const ContactModal = ({
       ...errors,
       ...(Object.keys(errors).length === 0 && { [name]: undefined }),
     }));
+  };
+
+  // Field status component for displaying errors, warnings, and success messages
+  const FieldStatus = ({ fieldName, value }) => {
+    const error = fieldErrors[fieldName];
+    const warning = !error ? getFieldWarning(fieldName, value) : null;
+    const success =
+      !error && !warning ? getFieldSuccess(fieldName, value) : null;
+
+    if (error) {
+      return (
+        <p className="mt-1 text-sm text-red-600 flex items-center">
+          <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+              clipRule="evenodd"
+            />
+          </svg>
+          {error}
+        </p>
+      );
+    }
+
+    if (warning) {
+      return (
+        <p className="mt-1 text-sm text-yellow-600 flex items-center">
+          <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+              clipRule="evenodd"
+            />
+          </svg>
+          {warning}
+        </p>
+      );
+    }
+
+    if (success) {
+      return (
+        <p className="mt-1 text-sm text-green-600 flex items-center">
+          <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clipRule="evenodd"
+            />
+          </svg>
+          {success}
+        </p>
+      );
+    }
+
+    return null;
   };
 
   // Auto-save draft to localStorage
@@ -378,6 +630,27 @@ const ContactModal = ({
     formData.message.trim() &&
     Object.keys(fieldErrors).length === 0;
 
+  // Debug logging - remove in production
+  if (currentStep === 2) {
+    console.log("🔍 Form Debug Info:");
+    console.log("canSubmit:", canSubmit);
+    console.log("fieldErrors:", fieldErrors);
+    console.log("Field values:", {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      company: formData.company.trim(),
+      jobTitle: formData.jobTitle.trim(),
+      currentChallenges: formData.currentChallenges.trim(),
+      expectedOutcomes: formData.expectedOutcomes.trim(),
+      message: formData.message.trim(),
+    });
+    console.log("Field lengths:", {
+      currentChallenges: formData.currentChallenges.trim().length,
+      expectedOutcomes: formData.expectedOutcomes.trim().length,
+      message: formData.message.trim().length,
+    });
+  }
+
   if (!isOpen) return null;
 
   return (
@@ -586,26 +859,15 @@ const ContactModal = ({
                       className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
                         fieldErrors.name
                           ? "border-red-300 focus:ring-red-500"
+                          : getFieldSuccess("name", formData.name)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("name", formData.name)
+                          ? "border-yellow-300 focus:ring-yellow-500"
                           : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                       } focus:outline-none`}
                       placeholder="Your full name"
                     />
-                    {fieldErrors.name && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {fieldErrors.name}
-                      </p>
-                    )}
+                    <FieldStatus fieldName="name" value={formData.name} />
                   </div>
 
                   <div>
@@ -626,26 +888,15 @@ const ContactModal = ({
                       className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
                         fieldErrors.email
                           ? "border-red-300 focus:ring-red-500"
+                          : getFieldSuccess("email", formData.email)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("email", formData.email)
+                          ? "border-yellow-300 focus:ring-yellow-500"
                           : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                       } focus:outline-none`}
                       placeholder="your.email@company.com"
                     />
-                    {fieldErrors.email && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {fieldErrors.email}
-                      </p>
-                    )}
+                    <FieldStatus fieldName="email" value={formData.email} />
                   </div>
                 </div>
 
@@ -670,26 +921,15 @@ const ContactModal = ({
                       className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
                         fieldErrors.phone
                           ? "border-red-300 focus:ring-red-500"
+                          : getFieldSuccess("phone", formData.phone)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("phone", formData.phone)
+                          ? "border-yellow-300 focus:ring-yellow-500"
                           : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                       } focus:outline-none`}
                       placeholder="+91 98765 43210"
                     />
-                    {fieldErrors.phone && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {fieldErrors.phone}
-                      </p>
-                    )}
+                    <FieldStatus fieldName="phone" value={formData.phone} />
                   </div>
 
                   <div>
@@ -710,26 +950,15 @@ const ContactModal = ({
                       className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
                         fieldErrors.company
                           ? "border-red-300 focus:ring-red-500"
+                          : getFieldSuccess("company", formData.company)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("company", formData.company)
+                          ? "border-yellow-300 focus:ring-yellow-500"
                           : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                       } focus:outline-none`}
                       placeholder="Your company name"
                     />
-                    {fieldErrors.company && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {fieldErrors.company}
-                      </p>
-                    )}
+                    <FieldStatus fieldName="company" value={formData.company} />
                   </div>
                 </div>
 
@@ -752,26 +981,18 @@ const ContactModal = ({
                       className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
                         fieldErrors.jobTitle
                           ? "border-red-300 focus:ring-red-500"
+                          : getFieldSuccess("jobTitle", formData.jobTitle)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("jobTitle", formData.jobTitle)
+                          ? "border-yellow-300 focus:ring-yellow-500"
                           : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                       } focus:outline-none`}
                       placeholder="e.g., CEO, Operations Manager, Project Director"
                     />
-                    {fieldErrors.jobTitle && (
-                      <p className="mt-1 text-sm text-red-600 flex items-center">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {fieldErrors.jobTitle}
-                      </p>
-                    )}
+                    <FieldStatus
+                      fieldName="jobTitle"
+                      value={formData.jobTitle}
+                    />
                   </div>
 
                   <div>
@@ -786,7 +1007,13 @@ const ContactModal = ({
                       name="industry"
                       value={formData.industry}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess("industry", formData.industry)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("industry", formData.industry)
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select your industry</option>
                       <option value="technology">Technology & Software</option>
@@ -812,6 +1039,10 @@ const ContactModal = ({
                       </option>
                       <option value="other">Other</option>
                     </select>
+                    <FieldStatus
+                      fieldName="industry"
+                      value={formData.industry}
+                    />
                   </div>
                 </div>
 
@@ -828,7 +1059,13 @@ const ContactModal = ({
                       name="companySize"
                       value={formData.companySize}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess("companySize", formData.companySize)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("companySize", formData.companySize)
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select company size</option>
                       <option value="startup">Startup (1-10 employees)</option>
@@ -845,6 +1082,10 @@ const ContactModal = ({
                         Large Enterprise (1000+ employees)
                       </option>
                     </select>
+                    <FieldStatus
+                      fieldName="companySize"
+                      value={formData.companySize}
+                    />
                   </div>
 
                   <div>
@@ -859,7 +1100,13 @@ const ContactModal = ({
                       name="urgency"
                       value={formData.urgency}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess("urgency", formData.urgency)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("urgency", formData.urgency)
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select urgency level</option>
                       <option value="low">Low - Planning for future</option>
@@ -871,6 +1118,7 @@ const ContactModal = ({
                         Critical - Immediate action needed
                       </option>
                     </select>
+                    <FieldStatus fieldName="urgency" value={formData.urgency} />
                   </div>
                 </div>
 
@@ -894,6 +1142,104 @@ const ContactModal = ({
             {/* Step 2: Project Details */}
             {currentStep === 2 && (
               <div className="space-y-6">
+                {/* Form Completion Helper */}
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-sm font-semibold text-slate-700">
+                      Form Completion Status
+                    </h3>
+                    <span className="text-xs text-slate-500">
+                      {Math.round(getFormProgress())}% Complete
+                    </span>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center text-xs">
+                      <div
+                        className={`w-2 h-2 rounded-full mr-2 ${
+                          formData.currentChallenges.trim().length >= 20
+                            ? "bg-green-500"
+                            : formData.currentChallenges.trim().length > 0
+                            ? "bg-yellow-500"
+                            : "bg-gray-300"
+                        }`}
+                      ></div>
+                      <span
+                        className={
+                          formData.currentChallenges.trim().length >= 20
+                            ? "text-green-700"
+                            : formData.currentChallenges.trim().length > 0
+                            ? "text-yellow-700"
+                            : "text-gray-500"
+                        }
+                      >
+                        Current Challenges{" "}
+                        {formData.currentChallenges.trim().length >= 20
+                          ? "✓"
+                          : `(${
+                              formData.currentChallenges.trim().length
+                            }/20 chars)`}
+                      </span>
+                    </div>
+                    <div className="flex items-center text-xs">
+                      <div
+                        className={`w-2 h-2 rounded-full mr-2 ${
+                          formData.expectedOutcomes.trim().length >= 20
+                            ? "bg-green-500"
+                            : formData.expectedOutcomes.trim().length > 0
+                            ? "bg-yellow-500"
+                            : "bg-gray-300"
+                        }`}
+                      ></div>
+                      <span
+                        className={
+                          formData.expectedOutcomes.trim().length >= 20
+                            ? "text-green-700"
+                            : formData.expectedOutcomes.trim().length > 0
+                            ? "text-yellow-700"
+                            : "text-gray-500"
+                        }
+                      >
+                        Expected Outcomes{" "}
+                        {formData.expectedOutcomes.trim().length >= 20
+                          ? "✓"
+                          : `(${
+                              formData.expectedOutcomes.trim().length
+                            }/20 chars)`}
+                      </span>
+                    </div>
+                    <div className="flex items-center text-xs">
+                      <div
+                        className={`w-2 h-2 rounded-full mr-2 ${
+                          formData.message.trim().length >= 10
+                            ? "bg-green-500"
+                            : formData.message.trim().length > 0
+                            ? "bg-yellow-500"
+                            : "bg-gray-300"
+                        }`}
+                      ></div>
+                      <span
+                        className={
+                          formData.message.trim().length >= 10
+                            ? "text-green-700"
+                            : formData.message.trim().length > 0
+                            ? "text-yellow-700"
+                            : "text-gray-500"
+                        }
+                      >
+                        Additional Information{" "}
+                        {formData.message.trim().length >= 10
+                          ? "✓"
+                          : `(${formData.message.trim().length}/10 chars)`}
+                      </span>
+                    </div>
+                  </div>
+                  {!canSubmit && (
+                    <div className="mt-2 text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-lg p-2">
+                      💡 <strong>Tip:</strong> Fill all required fields above to
+                      enable the "Send Message" button
+                    </div>
+                  )}
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -907,7 +1253,13 @@ const ContactModal = ({
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess("projectType", formData.projectType)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("projectType", formData.projectType)
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select project type</option>
                       <option value="consultation">Initial Consultation</option>
@@ -919,6 +1271,10 @@ const ContactModal = ({
                       <option value="ongoing">Ongoing Support</option>
                       <option value="other">Other</option>
                     </select>
+                    <FieldStatus
+                      fieldName="projectType"
+                      value={formData.projectType}
+                    />
                   </div>
 
                   <div>
@@ -933,7 +1289,13 @@ const ContactModal = ({
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess("timeline", formData.timeline)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("timeline", formData.timeline)
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select timeline</option>
                       <option value="immediate">
@@ -944,6 +1306,10 @@ const ContactModal = ({
                       <option value="long">Long-term (6+ months)</option>
                       <option value="flexible">Flexible</option>
                     </select>
+                    <FieldStatus
+                      fieldName="timeline"
+                      value={formData.timeline}
+                    />
                   </div>
                 </div>
 
@@ -963,7 +1329,13 @@ const ContactModal = ({
                       name="budgetRange"
                       value={formData.budgetRange}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess("budgetRange", formData.budgetRange)
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning("budgetRange", formData.budgetRange)
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select budget range</option>
                       <option value="under-1l">Under ₹1 Lakh</option>
@@ -974,6 +1346,10 @@ const ContactModal = ({
                       <option value="50l+">₹50+ Lakhs</option>
                       <option value="discuss">Prefer to discuss</option>
                     </select>
+                    <FieldStatus
+                      fieldName="budgetRange"
+                      value={formData.budgetRange}
+                    />
                   </div>
 
                   <div>
@@ -988,7 +1364,19 @@ const ContactModal = ({
                       name="hasWorkedWithConsultants"
                       value={formData.hasWorkedWithConsultants}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess(
+                          "hasWorkedWithConsultants",
+                          formData.hasWorkedWithConsultants
+                        )
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning(
+                              "hasWorkedWithConsultants",
+                              formData.hasWorkedWithConsultants
+                            )
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="">Select experience</option>
                       <option value="yes-positive">
@@ -1003,6 +1391,10 @@ const ContactModal = ({
                         We handle everything internally
                       </option>
                     </select>
+                    <FieldStatus
+                      fieldName="hasWorkedWithConsultants"
+                      value={formData.hasWorkedWithConsultants}
+                    />
                   </div>
                 </div>
 
@@ -1019,7 +1411,19 @@ const ContactModal = ({
                       name="preferredContactMethod"
                       value={formData.preferredContactMethod}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
+                      className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 ${
+                        getFieldSuccess(
+                          "preferredContactMethod",
+                          formData.preferredContactMethod
+                        )
+                          ? "border-green-300 focus:ring-green-500"
+                          : getFieldWarning(
+                              "preferredContactMethod",
+                              formData.preferredContactMethod
+                            )
+                          ? "border-yellow-300 focus:ring-yellow-500"
+                          : `border-slate-300 ${colors.focusRing} focus:border-transparent`
+                      } focus:outline-none`}
                     >
                       <option value="email">Email</option>
                       <option value="phone">Phone Call</option>
@@ -1027,6 +1431,10 @@ const ContactModal = ({
                       <option value="in-person">In-Person Meeting</option>
                       <option value="whatsapp">WhatsApp</option>
                     </select>
+                    <FieldStatus
+                      fieldName="preferredContactMethod"
+                      value={formData.preferredContactMethod}
+                    />
                   </div>
 
                   <div>
@@ -1100,26 +1508,24 @@ const ContactModal = ({
                     className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 resize-none ${
                       fieldErrors.currentChallenges
                         ? "border-red-300 focus:ring-red-500"
+                        : getFieldSuccess(
+                            "currentChallenges",
+                            formData.currentChallenges
+                          )
+                        ? "border-green-300 focus:ring-green-500"
+                        : getFieldWarning(
+                            "currentChallenges",
+                            formData.currentChallenges
+                          )
+                        ? "border-yellow-300 focus:ring-yellow-500"
                         : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                     } focus:outline-none`}
                     placeholder="Describe the specific challenges, pain points, or issues your organization is currently facing..."
                   ></textarea>
-                  {fieldErrors.currentChallenges && (
-                    <p className="mt-1 text-sm text-red-600 flex items-center">
-                      <svg
-                        className="w-4 h-4 mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {fieldErrors.currentChallenges}
-                    </p>
-                  )}
+                  <FieldStatus
+                    fieldName="currentChallenges"
+                    value={formData.currentChallenges}
+                  />
                 </div>
 
                 <div>
@@ -1140,26 +1546,24 @@ const ContactModal = ({
                     className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 resize-none ${
                       fieldErrors.expectedOutcomes
                         ? "border-red-300 focus:ring-red-500"
+                        : getFieldSuccess(
+                            "expectedOutcomes",
+                            formData.expectedOutcomes
+                          )
+                        ? "border-green-300 focus:ring-green-500"
+                        : getFieldWarning(
+                            "expectedOutcomes",
+                            formData.expectedOutcomes
+                          )
+                        ? "border-yellow-300 focus:ring-yellow-500"
                         : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                     } focus:outline-none`}
                     placeholder="What specific outcomes, improvements, or results do you hope to achieve through our partnership?"
                   ></textarea>
-                  {fieldErrors.expectedOutcomes && (
-                    <p className="mt-1 text-sm text-red-600 flex items-center">
-                      <svg
-                        className="w-4 h-4 mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {fieldErrors.expectedOutcomes}
-                    </p>
-                  )}
+                  <FieldStatus
+                    fieldName="expectedOutcomes"
+                    value={formData.expectedOutcomes}
+                  />
                 </div>
 
                 <div>
@@ -1180,26 +1584,15 @@ const ContactModal = ({
                     className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 resize-none ${
                       fieldErrors.message
                         ? "border-red-300 focus:ring-red-500"
+                        : getFieldSuccess("message", formData.message)
+                        ? "border-green-300 focus:ring-green-500"
+                        : getFieldWarning("message", formData.message)
+                        ? "border-yellow-300 focus:ring-yellow-500"
                         : `border-slate-300 ${colors.focusRing} focus:border-transparent`
                     } focus:outline-none`}
                     placeholder="Any additional details, specific requirements, questions, or context you'd like to share with us..."
                   ></textarea>
-                  {fieldErrors.message && (
-                    <p className="mt-1 text-sm text-red-600 flex items-center">
-                      <svg
-                        className="w-4 h-4 mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {fieldErrors.message}
-                    </p>
-                  )}
+                  <FieldStatus fieldName="message" value={formData.message} />
                   <div className="mt-2 text-sm text-slate-500">
                     {formData.message.length}/1000 characters
                   </div>
