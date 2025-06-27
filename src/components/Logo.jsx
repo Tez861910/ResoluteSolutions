@@ -1,7 +1,12 @@
 // Logo component that uses the actual brand logo
 import logoImage from "../assets/resolute-solutions-high-resolution-logo-transparent-2.png";
 
-const Logo = ({ size = "medium", showText = true, className = "", onClick }) => {
+const Logo = ({
+  size = "medium",
+  showText = true,
+  className = "",
+  onClick,
+}) => {
   const sizes = {
     small: "h-8 w-8 sm:h-10 sm:w-10", // Fixed square aspect ratio for perfect circles
     medium: "h-12 w-12 sm:h-16 sm:w-16", // Fixed square aspect ratio for perfect circles
