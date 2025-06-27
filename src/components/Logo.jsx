@@ -16,26 +16,7 @@ const Logo = ({ size = "medium", showText = true, className = "" }) => {
           src="/resolute-solutions-high-resolution-logo-transparent-2.png"
           alt="Resolute Solutions Logo"
           className={`${sizes[size]} object-cover rounded-full border-2 border-blue-200 shadow-md transform group-hover:scale-105 transition-all duration-300 group-hover:shadow-lg group-hover:border-blue-300`}
-          onError={(e) => {
-            // All fallbacks use the same image for consistency
-            e.target.src =
-              "/resolute-solutions-high-resolution-logo-transparent-2.png";
-            e.target.onerror = (e2) => {
-              // Ultimate fallback to text logo if image fails
-              e2.target.style.display = "none";
-              e2.target.nextSibling.style.display = "flex";
-            };
-          }}
         />
-        {/* Fallback RS logo if all images fail to load */}
-        <div
-          className={`${sizes[size]} bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300 border-2 border-white group-hover:shadow-xl`}
-          style={{ display: "none" }}
-        >
-          <span className="text-white font-bold tracking-tight text-sm sm:text-lg lg:text-xl">
-            RS
-          </span>
-        </div>
       </div>
       {showText && (
         <div className="flex flex-col">

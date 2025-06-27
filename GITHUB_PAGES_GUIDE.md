@@ -3,6 +3,7 @@
 ## Prerequisites ✅
 
 Before starting, make sure you have:
+
 - [x] React app built with Vite
 - [x] GitHub repository created
 - [x] Code pushed to GitHub
@@ -17,7 +18,7 @@ This is the most important step:
 1. Go to your GitHub repository: `https://github.com/tez861910/ResoluteSolutions`
 2. Click on **⚙️ Settings** tab
 3. Scroll down to **📄 Pages** section (left sidebar)
-4. Under **Source**, select **"GitHub Actions"** 
+4. Under **Source**, select **"GitHub Actions"**
    - ❌ **NOT** "Deploy from a branch"
    - ✅ **YES** "GitHub Actions"
 
@@ -48,22 +49,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build
         run: npm run build
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -86,6 +87,7 @@ jobs:
 You can deploy in three ways:
 
 #### **Option A: Automatic (Push to main)**
+
 ```bash
 git add .
 git commit -m "Deploy to GitHub Pages"
@@ -93,12 +95,14 @@ git push origin main
 ```
 
 #### **Option B: Manual Trigger**
+
 1. Go to **Actions** tab in your repository
 2. Click on **"Deploy to GitHub Pages"** workflow
 3. Click **"Run workflow"** button
 4. Click **"Run workflow"** again
 
 #### **Option C: Local Deploy Command**
+
 ```bash
 npm run deploy
 ```
@@ -120,15 +124,19 @@ Once deployed, your site will be available at:
 ### Common Issues:
 
 #### **Issue: "Missing environment" error**
+
 ✅ **Fixed**: Your workflow already has the correct environment configuration
 
 #### **Issue: 404 errors on refresh**
+
 ✅ **Fixed**: You have `404.html` and SPA redirect scripts
 
 #### **Issue: Assets not loading**
+
 ✅ **Fixed**: Asset filenames have been updated to remove spaces
 
 #### **Issue: Wrong source files served**
+
 **Solution**: Make sure repository Pages settings use "GitHub Actions", not branch deployment
 
 ### **Verify Deployment Success:**
@@ -157,7 +165,7 @@ npm run dev
 ## 🎯 **Expected Timeline**
 
 - **Build**: 2-3 minutes
-- **Deploy**: 1-2 minutes  
+- **Deploy**: 1-2 minutes
 - **Propagation**: 1-5 minutes
 - **Total**: ~5-10 minutes
 
@@ -174,6 +182,7 @@ npm run dev
 ## 🆘 **Need Help?**
 
 If you encounter issues:
+
 1. Check the **Actions** tab for error messages
 2. Verify **Pages** settings are correct
 3. Clear browser cache and try again
