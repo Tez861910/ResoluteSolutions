@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 const ContactForm = ({
@@ -60,6 +60,56 @@ const ContactForm = ({
 
   const colors = colorSchemes[colorScheme];
 
+  // Function to clear all form-related memory
+  const clearFormMemory = () => {
+    try {
+      // Clear localStorage items related to forms
+      const keysToRemove = [
+        "contactFormDraft",
+        "tempFormData",
+        "formCache",
+        "contactForm",
+        "formData",
+        "draftData",
+      ];
+
+      keysToRemove.forEach((key) => {
+        localStorage.removeItem(key);
+      });
+
+      // Clear sessionStorage items related to forms
+      keysToRemove.forEach((key) => {
+        sessionStorage.removeItem(key);
+      });
+
+      // Clear any form-related caches
+      if ("caches" in window) {
+        caches.keys().then((names) => {
+          names.forEach((name) => {
+            if (name.includes("form") || name.includes("contact")) {
+              caches.delete(name);
+            }
+          });
+        });
+      }
+
+      console.log("🧹 Form memory cleared successfully");
+    } catch (error) {
+      console.error("Error clearing form memory:", error);
+    }
+  };
+
+  // Clear memory on component unmount
+  useEffect(() => {
+    return () => {
+      // Cleanup function - runs when component unmounts
+      console.log(
+        "🧹 ContactForm unmounting - clearing any remaining memory..."
+      );
+      clearFormMemory();
+    };
+  }, []);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -72,26 +122,62 @@ const ContactForm = ({
     setIsSubmitting(true);
     setSubmitStatus("");
 
+    // Environment variables test
+    console.log("🧪 Environment Variables Test:");
+    console.log("All import.meta.env:", import.meta.env);
+    console.log("NODE_ENV:", import.meta.env.NODE_ENV);
+    console.log("DEV:", import.meta.env.DEV);
+    console.log("PROD:", import.meta.env.PROD);
+
     try {
-      // EmailJS configuration - replace with your actual values
-      const serviceId = "YOUR_SERVICE_ID";
-      const templateId = "YOUR_TEMPLATE_ID";
-      const publicKey = "YOUR_PUBLIC_KEY";
+      // EmailJS configuration using environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      // Debug logging for environment variables
+      console.log("🔧 ContactForm EmailJS Debug:");
+      console.log("serviceId:", serviceId ? "✅ Found" : "❌ Missing");
+      console.log("templateId:", templateId ? "✅ Found" : "❌ Missing");
+      console.log("publicKey:", publicKey ? "✅ Found" : "❌ Missing");
+
+      // Validate environment variables
+      if (!serviceId || !templateId || !publicKey) {
+        console.error(
+          "EmailJS configuration missing. Please check your .env file."
+        );
+        console.error("Missing values:", {
+          serviceId: !serviceId,
+          templateId: !templateId,
+          publicKey: !publicKey,
+        });
+        throw new Error("Email service not configured");
+      }
 
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
+        phone: formData.phone || "Not provided",
+        company: formData.company || "Not provided",
         service_interest: formData.serviceInterest,
-        project_type: formData.projectType,
-        budget_range: formData.budgetRange,
-        timeline: formData.timeline,
+        project_type: formData.projectType || "Not specified",
+        budget_range: formData.budgetRange || "Not specified",
+        timeline: formData.timeline || "Not specified",
         message: formData.message,
-        to_email: "resolutesolutions@hotmail.com",
+        to_email:
+          import.meta.env.VITE_CONTACT_EMAIL || "resolutesolutions@hotmail.com",
+        website_url:
+          import.meta.env.VITE_WEBSITE_URL ||
+          "https://resolutesolutions.github.io",
+        current_time: new Date().toLocaleString(),
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // Clear all form-related memory
+      clearFormMemory();
+
+      console.log("✅ Form submitted successfully! Local memory cleared.");
 
       setSubmitStatus("success");
       setFormData({
@@ -105,6 +191,11 @@ const ContactForm = ({
         timeline: "",
         message: "",
       });
+
+      // Show success notification and auto-hide after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus("");
+      }, 5000);
     } catch (error) {
       console.error("Email send error:", error);
       setSubmitStatus("error");
@@ -129,26 +220,48 @@ const ContactForm = ({
           className={`bg-white rounded-3xl shadow-xl p-8 md:p-12 border ${colors.border}`}
         >
           {submitStatus === "success" && (
-            <div className="mb-8 p-4 bg-green-50 border border-green-200 rounded-xl">
-              <div className="flex items-center">
+            <div className="mb-8 p-6 bg-green-50 border-2 border-green-200 rounded-xl shadow-lg transform transition-all duration-500 ease-in-out">
+              <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <svg
-                    className="h-5 w-5 text-green-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <div className="flex items-center justify-center w-12 h-12 bg-green-500 rounded-full animate-bounce">
+                    <svg
+                      className="h-7 w-7 text-white"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-green-800 font-medium">
-                    Thank you! Your message has been sent successfully. We'll
-                    get back to you within 24 hours.
+                <div className="ml-4 flex-1">
+                  <h3 className="text-xl font-bold text-green-800 mb-3 flex items-center">
+                    🎉 Message Sent Successfully!
+                    <span className="ml-2 inline-block w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+                  </h3>
+                  <p className="text-green-700 font-medium mb-3">
+                    Thank you for contacting <strong>Resolute Solutions</strong>
+                    ! Your inquiry has been received and we'll respond within 24
+                    hours.
                   </p>
+                  <div className="text-sm text-green-600 space-y-1">
+                    <p>✅ Form data submitted and validated</p>
+                    <p>✅ Email notification sent to our team</p>
+                    <p>✅ Local application memory cleared</p>
+                    <p>✅ Form reset and ready for new inquiries</p>
+                    <div className="mt-3 p-3 bg-green-100 rounded-lg">
+                      <p className="font-semibold text-green-800">
+                        💡 Your submission is complete! You can safely navigate
+                        away from this page.
+                      </p>
+                      <p className="text-xs text-green-600 mt-1">
+                        This notification will auto-hide in 5 seconds.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
