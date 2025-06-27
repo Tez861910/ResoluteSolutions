@@ -1,4 +1,8 @@
+import { useState } from "react";
+import ContactModal from "../components/ContactModal";
+
 const HouseKeepingProducts = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const services = [
     {
       title: "Product Lifecycle Management",
@@ -218,18 +222,12 @@ const HouseKeepingProducts = () => {
                   your product portfolio and drive sustainable growth.
                 </p>
                 <div className="space-y-4">
-                  <a
-                    href="mailto:resolutesolutions@hotmail.com"
+                  <button
+                    onClick={() => setIsModalOpen(true)}
                     className="block w-full bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-emerald-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
                   >
-                    Schedule a Consultation
-                  </a>
-                  <a
-                    href="tel:+918073570073"
-                    className="block w-full border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-bold hover:bg-slate-50 transition-all duration-300 text-center"
-                  >
-                    Call Us Today{" "}
-                  </a>
+                    Get Started
+                  </button>
                 </div>
               </div>
             </div>
@@ -297,6 +295,16 @@ const HouseKeepingProducts = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Optimize Your Product Portfolio"
+        subtitle="Let's discuss how our house keeping products expertise can maximize your product lifecycle value"
+        serviceType="House Keeping Products"
+        colorScheme="emerald-cyan"
+      />
     </div>
   );
 };

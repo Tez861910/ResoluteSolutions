@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Logo from "../components/Logo";
+import ContactModal from "../components/ContactModal";
 import logoImage from "../assets/resolute-solutions-high-resolution-logo-transparent-2.png";
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const verticals = [
     {
       name: "Ingredient Sourcing & Risk Management Analysis",
@@ -291,22 +295,32 @@ const Home = () => {
               drive meaningful transformation across their organizations
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a
-                href="mailto:resolutesolutions@hotmail.com"
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl"
               >
                 <span className="relative z-10">Start Your Journey</span>
-              </a>
-              <a
-                href="tel:+918073570073"
+              </button>
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="group border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
               >
-                Schedule Discovery Call
-              </a>
+                Get In Touch
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Ready to Transform Your Business?"
+        subtitle="Tell us about your project and let's discuss how Resolute Solutions can help you achieve your goals"
+        serviceType="General Inquiry"
+        colorScheme="blue-purple"
+      />
     </div>
   );
 };
