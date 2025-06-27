@@ -1,4 +1,8 @@
+import { useState } from "react";
+import ContactModal from "../components/ContactModal";
+
 const ProjectManagement = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const services = [
     {
       title: "Project Planning",
@@ -280,18 +284,12 @@ const ProjectManagement = () => {
                   team can deliver exceptional results for your organization.
                 </p>
                 <div className="space-y-4">
-                  <a
-                    href="mailto:resolutesolutions@hotmail.com"
+                  <button
+                    onClick={() => setIsModalOpen(true)}
                     className="block w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:from-orange-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
                   >
                     Start Your Project
-                  </a>
-                  <a
-                    href="tel:+918073570073"
-                    className="block w-full border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-bold hover:bg-slate-50 transition-all duration-300 text-center"
-                  >
-                    Schedule a Call
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -365,6 +363,16 @@ const ProjectManagement = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Ready to Start Your Project?"
+        subtitle="Let's discuss your project management needs and how we can help you achieve exceptional results"
+        serviceType="Project Management"
+        colorScheme="orange-pink"
+      />
     </div>
   );
 };

@@ -1,4 +1,8 @@
+import { useState } from "react";
+import ContactModal from "../components/ContactModal";
+
 const IngredientSourcingRiskAnalysis = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sourcing_services = [
     {
       title: "Supply Chain Optimization",
@@ -140,12 +144,12 @@ const IngredientSourcingRiskAnalysis = () => {
               >
                 <span className="relative z-10">Explore Our Services</span>
               </a>
-              <a
-                href="mailto:resolutesolutions.connect@gmail.com?subject=Consultation%20Request%20-%20Ingredient%20Sourcing%20and%20Risk%20Management&body=Hello%20Resolute%20Solutions%20Team,%0A%0AI%20would%20like%20to%20schedule%20a%20consultation%20regarding%20your%20Ingredient%20Sourcing%20and%20Risk%20Management%20services.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0AThank%20you!"
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="group border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-center"
               >
                 Get Started
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -297,28 +301,25 @@ const IngredientSourcingRiskAnalysis = () => {
             strategies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:resolutesolutions.connect@gmail.com?subject=Consultation%20Request%20-%20Ingredient%20Sourcing%20and%20Risk%20Management&body=Hello%20Resolute%20Solutions%20Team,%0A%0AI%20would%20like%20to%20schedule%20a%20consultation%20regarding%20your%20Ingredient%20Sourcing%20and%20Risk%20Management%20services.%0A%0APlease%20let%20me%20know%20your%20availability.%0A%0AThank%20you!"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center no-underline"
-              title="Schedule a consultation via email"
-              aria-label="Schedule consultation for Ingredient Sourcing and Risk Management services"
             >
-              Schedule Consultation
-            </a>
-            <a
-              href="tel:+918073570073"
-              className="border-2 border-white/30 hover:border-white/50 text-white font-semibold py-4 px-8 rounded-full hover:bg-white/10 transition-all duration-300 text-center no-underline flex items-center justify-center gap-2"
-              title="Call us now for immediate assistance"
-              aria-label="Call for consultation about Ingredient Sourcing and Risk Management"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              Call Now
-            </a>
+              Get Started
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Optimize Your Supply Chain & Risk Management"
+        subtitle="Let's discuss how we can strengthen your ingredient sourcing and build comprehensive risk management strategies"
+        serviceType="Ingredient Sourcing & Risk Management Analysis"
+        colorScheme="yellow-red"
+      />
     </div>
   );
 };
