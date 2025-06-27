@@ -92,8 +92,6 @@ const ContactForm = ({
           });
         });
       }
-
-      console.log("🧹 Form memory cleared successfully");
     } catch (error) {
       console.error("Error clearing form memory:", error);
     }
@@ -103,9 +101,6 @@ const ContactForm = ({
   useEffect(() => {
     return () => {
       // Cleanup function - runs when component unmounts
-      console.log(
-        "🧹 ContactForm unmounting - clearing any remaining memory..."
-      );
       clearFormMemory();
     };
   }, []);
@@ -122,36 +117,20 @@ const ContactForm = ({
     setIsSubmitting(true);
     setSubmitStatus("");
 
-    // Environment variables test
-    console.log("🧪 Environment Variables Test:");
-    console.log("All import.meta.env:", import.meta.env);
-    console.log("NODE_ENV:", import.meta.env.NODE_ENV);
-    console.log("DEV:", import.meta.env.DEV);
-    console.log("PROD:", import.meta.env.PROD);
-
     try {
       // EmailJS configuration using environment variables
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      // Debug logging for environment variables
-      console.log("🔧 ContactForm EmailJS Debug:");
-      console.log("serviceId:", serviceId ? "✅ Found" : "❌ Missing");
-      console.log("templateId:", templateId ? "✅ Found" : "❌ Missing");
-      console.log("publicKey:", publicKey ? "✅ Found" : "❌ Missing");
-
       // Validate environment variables
       if (!serviceId || !templateId || !publicKey) {
-        console.error(
-          "EmailJS configuration missing. Please check your .env file."
+        setSubmitStatus("error");
+        setIsSubmitting(false);
+        alert(
+          "We apologize, but our contact form is temporarily unavailable. Please email us directly at resolutesolutions@hotmail.com or try again later."
         );
-        console.error("Missing values:", {
-          serviceId: !serviceId,
-          templateId: !templateId,
-          publicKey: !publicKey,
-        });
-        throw new Error("Email service not configured");
+        return;
       }
 
       const templateParams = {

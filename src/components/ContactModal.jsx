@@ -550,10 +550,11 @@ const ContactModal = ({
 
       // Validate environment variables
       if (!serviceId || !templateId || !publicKey) {
-        console.error(
-          "EmailJS configuration missing. Please check your .env file."
+        setIsSubmitting(false);
+        alert(
+          "We apologize, but our contact form is temporarily unavailable. Please email us directly at resolutesolutions@hotmail.com or try again later."
         );
-        throw new Error("Email service not configured");
+        return;
       }
 
       const templateParams = {
@@ -671,98 +672,6 @@ const ContactModal = ({
     Object.entries(fieldErrors).filter(
       ([, value]) => value !== undefined && value !== null
     ).length === 0;
-
-  // Debug logging - ENHANCED DEBUG for button issue
-  if (currentStep === 2) {
-    console.log("🔍 ENHANCED Form Debug Info:");
-    console.log("canSubmit:", canSubmit);
-    console.log("isSubmitting:", isSubmitting);
-    console.log("Button should be enabled:", canSubmit && !isSubmitting);
-
-    // Check each individual condition
-    console.log("Individual canSubmit conditions:");
-    console.log(
-      "  formData.name.trim():",
-      !!formData.name.trim(),
-      `"${formData.name.trim()}" (length: ${formData.name.trim().length})`
-    );
-    console.log(
-      "  formData.email.trim():",
-      !!formData.email.trim(),
-      `"${formData.email.trim()}" (length: ${formData.email.trim().length})`
-    );
-    console.log(
-      "  formData.company.trim():",
-      !!formData.company.trim(),
-      `"${formData.company.trim()}" (length: ${formData.company.trim().length})`
-    );
-    console.log(
-      "  formData.jobTitle.trim():",
-      !!formData.jobTitle.trim(),
-      `"${formData.jobTitle.trim()}" (length: ${
-        formData.jobTitle.trim().length
-      })`
-    );
-    console.log(
-      "  formData.currentChallenges.trim():",
-      !!formData.currentChallenges.trim(),
-      `"${formData.currentChallenges.trim()}" (length: ${
-        formData.currentChallenges.trim().length
-      })`
-    );
-    console.log(
-      "  formData.expectedOutcomes.trim():",
-      !!formData.expectedOutcomes.trim(),
-      `"${formData.expectedOutcomes.trim()}" (length: ${
-        formData.expectedOutcomes.trim().length
-      })`
-    );
-    console.log(
-      "  formData.message.trim():",
-      !!formData.message.trim(),
-      `"${formData.message.trim()}" (length: ${formData.message.trim().length})`
-    );
-
-    const validErrors = Object.entries(fieldErrors).filter(
-      ([, value]) => value !== undefined && value !== null
-    );
-    console.log("  No fieldErrors:", validErrors.length === 0);
-
-    console.log("fieldErrors object:", fieldErrors);
-    console.log("fieldErrors keys:", Object.keys(fieldErrors));
-    console.log("Valid fieldErrors entries:", validErrors);
-
-    // Check if minimum length requirements are met
-    console.log("Minimum length checks:");
-    console.log(
-      "  currentChallenges >= 20:",
-      formData.currentChallenges.trim().length >= 20
-    );
-    console.log(
-      "  expectedOutcomes >= 20:",
-      formData.expectedOutcomes.trim().length >= 20
-    );
-    console.log("  message >= 10:", formData.message.trim().length >= 10);
-
-    // Test validation for each required field right now
-    console.log("Current validation results:");
-    [
-      "name",
-      "email",
-      "company",
-      "jobTitle",
-      "currentChallenges",
-      "expectedOutcomes",
-      "message",
-    ].forEach((field) => {
-      const currentErrors = validateField(field, formData[field]);
-      console.log(
-        `  ${field}:`,
-        Object.keys(currentErrors).length === 0 ? "✅ VALID" : "❌ INVALID",
-        currentErrors
-      );
-    });
-  }
 
   if (!isOpen) return null;
 
