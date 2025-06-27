@@ -292,6 +292,18 @@ const Home = () => {
                 Schedule Discovery Call
               </a>
             </div>
+            {/* Live Update Indicator */}
+            <div className="mt-8 text-center">
+              <p className="text-white/60 text-sm">
+                🔴 Live Site • Last Updated: {new Date().toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}
+              </p>
+            </div>
           </div>
         </div>
       </section>
