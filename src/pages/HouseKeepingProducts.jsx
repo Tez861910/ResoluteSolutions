@@ -63,14 +63,14 @@ const HouseKeepingProducts = () => {
     <div>
       {/* Hero Section */}
       <section className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-800 via-slate-900 to-cyan-800 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-800 via-slate-900 to-purple-800 opacity-90"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="max-w-4xl">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full mb-8">
               <span className="text-4xl">🏠</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold mb-8 tracking-tight">
-              <span className="bg-gradient-to-r from-emerald-200 to-cyan-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
                 House Keeping
               </span>
               <br />
@@ -107,7 +107,7 @@ const HouseKeepingProducts = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block bg-emerald-100 text-emerald-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Our Services
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -123,11 +123,11 @@ const HouseKeepingProducts = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-slate-100 hover:border-emerald-200 transform hover:-translate-y-2"
+                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-slate-100 hover:border-purple-200 transform hover:-translate-y-2"
               >
                 <div className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                       <svg
                         className="h-8 w-8 text-white"
                         fill="none"
@@ -144,7 +144,7 @@ const HouseKeepingProducts = () => {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-purple-700 transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-slate-600 mb-6 leading-relaxed">
@@ -157,7 +157,7 @@ const HouseKeepingProducts = () => {
                           key={idx}
                           className="flex items-center text-slate-700"
                         >
-                          <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full mr-3"></div>
+                          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></div>
                           <span className="text-sm font-medium">{feature}</span>
                         </div>
                       ))}
@@ -175,8 +175,8 @@ const HouseKeepingProducts = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block bg-emerald-100 text-emerald-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
-                Why Choose Us
+              <div className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
+                Benefits
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 House Keeping Excellence
@@ -190,7 +190,7 @@ const HouseKeepingProducts = () => {
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                    <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                       <svg
                         className="h-3 w-3 text-white"
                         fill="none"
@@ -224,7 +224,7 @@ const HouseKeepingProducts = () => {
                 <div className="space-y-4">
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="block w-full bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-emerald-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
+                    className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
                   >
                     Get Started
                   </button>
@@ -239,7 +239,7 @@ const HouseKeepingProducts = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block bg-cyan-100 text-cyan-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Our Process
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -280,11 +280,11 @@ const HouseKeepingProducts = () => {
             ].map((phase, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center text-xl font-bold mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-xl font-bold mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <span className="text-white">{phase.step}</span>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-purple-700 transition-colors">
                   {phase.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">

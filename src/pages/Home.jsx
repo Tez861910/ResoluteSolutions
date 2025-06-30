@@ -53,7 +53,7 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-800 via-slate-900 to-purple-800 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-800 via-slate-900 to-cyan-800 opacity-90"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -78,7 +78,7 @@ const Home = () => {
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl font-extrabold mb-8 tracking-tight">
-                <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-200 to-cyan-200 bg-clip-text text-transparent">
                   Resolute
                 </span>
                 <br />
@@ -111,7 +111,7 @@ const Home = () => {
             {/* Right Side - Large Logo */}
             <div className="hidden lg:flex justify-center items-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-2xl transform scale-125"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-full blur-2xl transform scale-125"></div>
                 <div className="relative flex items-center justify-center">
                   <img
                     src={logoImage}
@@ -125,7 +125,7 @@ const Home = () => {
                   />
                   {/* Fallback RS logo if image fails to load */}
                   <div
-                    className="w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold tracking-tight text-9xl shadow-2xl"
+                    className="w-96 h-96 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold tracking-tight text-9xl shadow-2xl"
                     style={{ display: "none" }}
                   >
                     RS
@@ -142,7 +142,7 @@ const Home = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-gradient-to-r from-emerald-100 to-cyan-100 text-emerald-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Why Us
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -184,11 +184,11 @@ const Home = () => {
             ].map((item, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-3xl mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <span>{item.icon}</span>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-purple-700 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
@@ -207,7 +207,7 @@ const Home = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-gradient-to-r from-emerald-100 to-cyan-100 text-emerald-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Our Expertise
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -223,16 +223,16 @@ const Home = () => {
             {verticals.map((vertical) => (
               <div
                 key={vertical.path}
-                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-slate-100 hover:border-purple-200 transform hover:-translate-y-2"
+                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-slate-100 hover:border-emerald-200 transform hover:-translate-y-2"
               >
                 <div className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-2xl transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center text-2xl transform group-hover:scale-110 transition-transform duration-300">
                       {vertical.icon}
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-purple-700 transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">
                       {vertical.name}
                     </h3>
                     <p className="text-slate-600 mb-6 leading-relaxed">
@@ -245,7 +245,7 @@ const Home = () => {
                           key={idx}
                           className="flex items-center text-slate-700"
                         >
-                          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></div>
+                          <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full mr-3"></div>
                           <span className="text-sm font-medium">{feature}</span>
                         </div>
                       ))}
@@ -253,7 +253,7 @@ const Home = () => {
 
                     <Link
                       to={vertical.path}
-                      className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors group"
+                      className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-800 transition-colors group"
                     >
                       Explore This Domain
                       <svg
@@ -280,7 +280,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="relative bg-slate-900 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-purple-900/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/50 to-cyan-900/50"></div>
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
           <div className="absolute bottom-10 right-10 w-48 h-48 bg-purple-500/20 rounded-full blur-xl"></div>
@@ -297,7 +297,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl"
+                className="group bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-10 py-4 rounded-full font-bold hover:from-emerald-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 shadow-xl"
               >
                 <span className="relative z-10">Start Your Journey</span>
               </button>
