@@ -139,8 +139,13 @@ const Home = () => {
       </section>
 
       {/* Why Right Choice Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 bg-white overflow-hidden">
+        {/* Subtle background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100/40 via-white/0 to-cyan-100/40 pointer-events-none"></div>
+        {/* Blurred shape for depth */}
+        <div className="absolute -top-16 -left-16 w-60 h-60 bg-emerald-200/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-200/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block bg-gradient-to-r from-emerald-100 to-cyan-100 text-emerald-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Why Us
@@ -203,9 +208,14 @@ const Home = () => {
       {/* Verticals Section */}
       <section
         id="verticals"
-        className="py-24 bg-gradient-to-b from-white to-slate-50"
+        className="relative py-24 bg-gradient-to-b from-white to-slate-50 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Subtle background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tl from-cyan-100/40 via-white/0 to-emerald-100/40 pointer-events-none"></div>
+        {/* Blurred shape for depth */}
+        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-cyan-200/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-40 h-40 bg-emerald-200/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block bg-gradient-to-r from-emerald-100 to-cyan-100 text-emerald-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Our Expertise
