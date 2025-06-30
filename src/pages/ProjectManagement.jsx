@@ -116,7 +116,7 @@ const ProjectManagement = () => {
                 <span className="relative z-10">Explore Our Services</span>
               </a>
               <a
-                href="mailto:resolutesolutions@hotmail.com"
+                href="#success"
                 className="group border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-center"
               >
                 Start Your Project
@@ -240,7 +240,10 @@ const ProjectManagement = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
+      <section
+        id="success"
+        className="py-24 bg-slate-50 relative overflow-hidden"
+      >
         {/* Blurred Gradient Overlay */}
         <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-orange-200 via-pink-200 to-white opacity-60 rounded-full blur-3xl z-0 pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-pink-100 via-orange-100 to-white opacity-50 rounded-full blur-2xl z-0 pointer-events-none"></div>

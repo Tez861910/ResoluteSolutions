@@ -216,6 +216,20 @@ const Layout = ({ children }) => {
                   </Link>
                 );
               })}
+              {/* <Link
+                to="/contact"
+                onClick={navigateAndScrollToTop}
+                className={`relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
+                  location.pathname === "/contact"
+                    ? "text-purple-700 bg-gradient-to-r from-purple-100 to-blue-50 shadow-sm"
+                    : "text-slate-700 hover:text-purple-700 hover:bg-purple-50"
+                }`}
+              >
+                <span className="mr-2">✉️</span>Contact
+                {location.pathname === "/contact" && (
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-600 rounded-full"></div>
+                )}
+              </Link> */}
             </nav>
 
             {/* Mobile menu button */}
@@ -338,6 +352,17 @@ const Layout = ({ children }) => {
                       </Link>
                     );
                   })}
+                  {/* <Link
+                    to="/contact"
+                    onClick={navigateAndScrollToTop}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      location.pathname === "/contact"
+                        ? "text-purple-700 bg-gradient-to-r from-purple-100 to-blue-50"
+                        : "text-slate-700 hover:text-purple-700 hover:bg-purple-50"
+                    }`}
+                  >
+                    <span className="mr-2">✉️</span>Contact
+                  </Link> */}
                 </div>
               </div>
             </>
@@ -883,6 +908,13 @@ const Layout = ({ children }) => {
                 >
                   Cookie Policy
                 </a>
+                <span className="text-gray-600 leading-none">•</span>
+                {/* <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-white transition-colors hover:underline font-medium"
+                >
+                  Contact
+                </Link> */}
               </div>
 
               {/* Bottom row - Copyright and Made in Bengaluru */}
