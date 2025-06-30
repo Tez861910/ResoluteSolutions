@@ -102,6 +102,32 @@ const Layout = ({ children }) => {
     setTimeout(() => setIsNavigating(false), 300);
   };
 
+  // Helper: get theme classes for scroll-to-top button
+  const getScrollTopTheme = (pathname) => {
+    if (pathname === "/sourcing-risk") {
+      return {
+        bg: "bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 focus:ring-yellow-300 border-yellow-400/80",
+        ring: "focus:ring-yellow-300 border-yellow-400/80",
+      };
+    } else if (pathname === "/projects") {
+      return {
+        bg: "bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 focus:ring-orange-300 border-orange-400/80",
+        ring: "focus:ring-orange-300 border-orange-400/80",
+      };
+    } else if (pathname === "/housekeeping") {
+      return {
+        bg: "bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 focus:ring-purple-300 border-blue-400/80 border-purple-400/80",
+        ring: "focus:ring-purple-300 border-blue-400/80 border-purple-400/80",
+      };
+    } else {
+      // Home and default
+      return {
+        bg: "bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-600 hover:to-cyan-700 focus:ring-emerald-300 border-emerald-400/80",
+        ring: "focus:ring-emerald-300 border-emerald-400/80",
+      };
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 scroll-smooth relative">
       {/* Subtle background gradient overlay for depth */}
@@ -182,12 +208,12 @@ const Layout = ({ children }) => {
                     "text-slate-700 hover:text-orange-700 hover:bg-orange-50";
                   dotColors = "bg-gradient-to-r from-orange-500 to-pink-600";
                 } else if (isHouseKeeping) {
-                  // Interchanged: House Keeping Products now uses blue theme
+                  // House Keeping Products uses blue-purple gradient
                   activeColors =
-                    "text-blue-700 bg-gradient-to-r from-blue-100 to-blue-50 shadow-sm";
+                    "text-blue-700 bg-gradient-to-r from-blue-100 to-purple-100 shadow-sm";
                   hoverColors =
-                    "text-slate-700 hover:text-blue-700 hover:bg-slate-100";
-                  dotColors = "bg-gradient-to-r from-blue-500 to-blue-600";
+                    "text-slate-700 hover:text-blue-700 hover:bg-blue-50";
+                  dotColors = "bg-gradient-to-r from-blue-500 to-purple-500";
                 } else {
                   // Default emerald/cyan theme (was blue)
                   activeColors =
@@ -327,7 +353,7 @@ const Layout = ({ children }) => {
                         "text-slate-700 hover:text-orange-700 hover:bg-orange-50";
                     } else if (isHouseKeeping) {
                       activeColors =
-                        "text-blue-700 bg-gradient-to-r from-blue-100 to-blue-50";
+                        "text-blue-700 bg-gradient-to-r from-blue-100 to-purple-100";
                       hoverColors =
                         "text-slate-700 hover:text-blue-700 hover:bg-slate-100";
                     } else {
@@ -967,14 +993,8 @@ const Layout = ({ children }) => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className={`fixed bottom-6 right-6 z-50 p-3 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95 transition-all duration-300 group focus:outline-none focus:ring-4 animate-bounce ${
-            location.pathname === "/sourcing-risk"
-              ? "bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 focus:ring-yellow-300"
-              : location.pathname === "/projects"
-              ? "bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 focus:ring-orange-300"
-              : location.pathname === "/housekeeping"
-              ? "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 focus:ring-blue-300"
-              : "bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-600 hover:to-cyan-700 focus:ring-emerald-300"
+          className={`fixed bottom-6 right-6 z-50 p-3 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95 transition-all duration-300 group focus:outline-none focus:ring-4 animate-bounce border-2 ${
+            getScrollTopTheme(location.pathname).bg
           }`}
           title="Scroll to top"
           aria-label="Scroll to top of page"

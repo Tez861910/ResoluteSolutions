@@ -322,21 +322,23 @@ const HouseKeepingProducts = () => {
               designed for diverse environments.
             </p>
             {/* Highlighted Intro Block */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-500 rounded-xl shadow-md px-8 py-6 max-w-2xl mx-auto mb-10">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight uppercase">
-                The Right Destination for All House Keeping Products
-              </h3>
-              <p className="text-slate-900 text-lg mb-2">
-                We supply world class products of special cleansing chemicals
-                relevant in all sectors of housekeeping.
-              </p>
-              <ul className="list-disc list-inside text-slate-900 text-base mb-2">
-                <li>
-                  The products are eco-friendly, user friendly and made with
-                  superior grades of ingredients.
-                </li>
-                <li>Supplied to consumers after intense quality checking.</li>
-              </ul>
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-[2px] rounded-xl shadow-md max-w-2xl mx-auto mb-10">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-[10px] px-8 py-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight uppercase">
+                  The Right Destination for All House Keeping Products
+                </h3>
+                <p className="text-slate-900 text-lg mb-2">
+                  We supply world class products of special cleansing chemicals
+                  relevant in all sectors of housekeeping.
+                </p>
+                <ul className="list-disc list-inside text-slate-900 text-base mb-2">
+                  <li>
+                    The products are eco-friendly, user friendly and made with
+                    superior grades of ingredients.
+                  </li>
+                  <li>Supplied to consumers after intense quality checking.</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
