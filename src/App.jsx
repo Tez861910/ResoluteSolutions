@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import IngredientSourcingRiskAnalysis from "./pages/IngredientSourcingRiskAnalysis";
 import ProjectManagement from "./pages/ProjectManagement";
 import HouseKeepingProducts from "./pages/HouseKeepingProducts";
+import Contact from "./pages/Contact";
 
 function App() {
   // Use basename only in production for GitHub Pages
@@ -23,6 +24,7 @@ function App() {
           />
           <Route path="/projects" element={<ProjectManagement />} />
           <Route path="/housekeeping" element={<HouseKeepingProducts />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
     </Router>
