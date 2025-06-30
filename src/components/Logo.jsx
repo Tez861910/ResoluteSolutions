@@ -20,11 +20,18 @@ const Logo = ({
       title="Click to scroll to top"
     >
       <div className="relative">
+        {/* Blurred Accent Glow Behind Logo */}
+        <div
+          className={`absolute inset-0 z-0 pointer-events-none ${sizes[size]} flex items-center justify-center`}
+          aria-hidden="true"
+        >
+          <div className="w-full h-full bg-gradient-to-br from-blue-300 via-purple-200 to-white opacity-60 blur-2xl rounded-full"></div>
+        </div>
         {/* Primary logo - PNG for perfect compatibility */}
         <img
           src={logoImage}
           alt="Resolute Solutions Logo"
-          className={`${sizes[size]} object-cover rounded-full border-2 border-blue-200 shadow-md transform group-hover:scale-105 group-active:scale-95 transition-all duration-300 group-hover:shadow-lg group-hover:border-blue-300`}
+          className={`relative z-10 ${sizes[size]} object-cover rounded-full border-2 border-blue-200 shadow-md transform group-hover:scale-105 group-active:scale-95 transition-all duration-300 group-hover:shadow-lg group-hover:border-blue-300`}
           onError={(e) => {
             // Fallback to text logo if image fails
             e.target.style.display = "none";
@@ -33,7 +40,7 @@ const Logo = ({
         />
         {/* Fallback RS logo if image fails to load */}
         <div
-          className={`${sizes[size]} bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-105 group-active:scale-95 transition-all duration-300 border-2 border-white group-hover:shadow-xl`}
+          className={`relative z-10 ${sizes[size]} bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-105 group-active:scale-95 transition-all duration-300 border-2 border-white group-hover:shadow-xl`}
           style={{ display: "none" }}
         >
           <span className="text-white font-bold tracking-tight text-sm sm:text-lg lg:text-xl">

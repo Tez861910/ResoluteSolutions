@@ -130,9 +130,12 @@ const ProjectManagement = () => {
       {/* Services Section */}
       <section
         id="services"
-        className="py-24 bg-gradient-to-b from-white to-slate-50"
+        className="py-24 relative bg-gradient-to-b from-white via-orange-50/60 to-slate-50 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Blurred Gradient Overlay */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-orange-300/40 via-pink-200/30 to-white rounded-full blur-3xl opacity-70 pointer-events-none z-0"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-pink-200/40 via-orange-100/30 to-white rounded-full blur-2xl opacity-60 pointer-events-none z-0"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block bg-orange-100 text-orange-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Our Services
@@ -198,8 +201,11 @@ const ProjectManagement = () => {
       </section>
 
       {/* Methodologies Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 relative bg-white overflow-hidden">
+        {/* Blurred Gradient Overlay */}
+        <div className="absolute -top-24 right-0 w-[350px] h-[350px] bg-gradient-to-br from-pink-200/40 via-orange-100/30 to-white rounded-full blur-2xl opacity-60 pointer-events-none z-0"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-orange-200/40 via-pink-100/30 to-white rounded-full blur-2xl opacity-50 pointer-events-none z-0"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block bg-orange-100 text-orange-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
               Our Methodologies
@@ -234,8 +240,11 @@ const ProjectManagement = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        {/* Blurred Gradient Overlay */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-orange-200 via-pink-200 to-white opacity-60 rounded-full blur-3xl z-0 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-pink-100 via-orange-100 to-white opacity-50 rounded-full blur-2xl z-0 pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-block bg-orange-100 text-orange-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
@@ -252,7 +261,7 @@ const ProjectManagement = () => {
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                    <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 shadow-md">
                       <svg
                         className="h-3 w-3 text-white"
                         fill="none"
@@ -275,7 +284,9 @@ const ProjectManagement = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-white rounded-3xl shadow-xl p-10 border border-slate-100">
+              {/* Card Gradient Overlay */}
+              <div className="absolute -top-10 -right-10 w-60 h-60 bg-gradient-to-br from-orange-200 via-pink-200 to-white opacity-40 rounded-full blur-2xl z-0 pointer-events-none"></div>
+              <div className="bg-white rounded-3xl shadow-xl p-10 border border-slate-100 relative z-10">
                 <h3 className="text-3xl font-bold text-slate-900 mb-6">
                   Ready to Start Your Project?
                 </h3>
