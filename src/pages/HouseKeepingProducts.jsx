@@ -308,7 +308,7 @@ const HouseKeepingProducts = () => {
         title="Optimize Your Product Portfolio"
         subtitle="Let's discuss how our house keeping products expertise can maximize your product lifecycle value"
         serviceType="House Keeping Products"
-        colorScheme="emerald-cyan"
+        colorScheme="blue-purple"
       />
     </div>
   );

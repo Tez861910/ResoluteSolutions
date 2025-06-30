@@ -9,7 +9,6 @@ const Layout = ({ children }) => {
   const [copiedEmail, setCopiedEmail] = useState("");
   const [isNavigating, setIsNavigating] = useState(false);
 
-  // Smooth scroll to t                                  className="p-2 text-gray-400 hover:text-rose-300 transition-colors opacity-0 group-hover:opacity-100">                                 className="p-2 text-gray-                                className="ml-3 p-2 text-gray-400 hover:text-indigo-300 transition-colors opacity-0 group-hover:opacity-100">00 hover:text-teal-300 transition-colors opacity-0 group-hover:opacity-100">                                 className="p-2 text-gray-                                className="ml-3 p-2 text-gray-400 hover:text-indigo-300 transition-colors opacity-0 group-hover:opacity-100">00 hover:text-teal-300 transition-colors opacity-0 group-hover:opacity-100">p function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -104,7 +103,18 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 scroll-smooth">
+    <div className="min-h-screen bg-slate-50 scroll-smooth relative">
+      {/* Subtle background gradient overlay for depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 60% 0%, rgba(37,99,235,0.08) 0%, transparent 60%), radial-gradient(ellipse at 0% 100%, rgba(124,58,237,0.07) 0%, transparent 70%), linear-gradient(120deg, rgba(16,185,129,0.04) 0%, rgba(234,179,8,0.03) 100%)",
+          mixBlendMode: "normal",
+        }}
+      ></div>
+
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -138,13 +148,13 @@ const Layout = ({ children }) => {
                 onClick={navigateAndScrollToTop}
                 className={`relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                   location.pathname === "/"
-                    ? "text-blue-700 bg-gradient-to-r from-blue-100 to-blue-50 shadow-sm"
-                    : "text-slate-700 hover:text-blue-700 hover:bg-slate-100"
+                    ? "text-emerald-700 bg-gradient-to-r from-emerald-100 to-cyan-50 shadow-sm"
+                    : "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50"
                 }`}
               >
                 Home
                 {location.pathname === "/" && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-emerald-500 to-cyan-600 rounded-full"></div>
                 )}
               </Link>
               {verticals.map((vertical) => {
@@ -172,18 +182,19 @@ const Layout = ({ children }) => {
                     "text-slate-700 hover:text-orange-700 hover:bg-orange-50";
                   dotColors = "bg-gradient-to-r from-orange-500 to-pink-600";
                 } else if (isHouseKeeping) {
-                  activeColors =
-                    "text-emerald-700 bg-gradient-to-r from-emerald-100 to-cyan-50 shadow-sm";
-                  hoverColors =
-                    "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50";
-                  dotColors = "bg-gradient-to-r from-emerald-500 to-cyan-600";
-                } else {
-                  // Default blue theme
+                  // Interchanged: House Keeping Products now uses blue theme
                   activeColors =
                     "text-blue-700 bg-gradient-to-r from-blue-100 to-blue-50 shadow-sm";
                   hoverColors =
                     "text-slate-700 hover:text-blue-700 hover:bg-slate-100";
                   dotColors = "bg-gradient-to-r from-blue-500 to-blue-600";
+                } else {
+                  // Default emerald/cyan theme (was blue)
+                  activeColors =
+                    "text-emerald-700 bg-gradient-to-r from-emerald-100 to-cyan-50 shadow-sm";
+                  hoverColors =
+                    "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50";
+                  dotColors = "bg-gradient-to-r from-emerald-500 to-cyan-600";
                 }
 
                 return (
@@ -272,8 +283,8 @@ const Layout = ({ children }) => {
                     onClick={navigateAndScrollToTop}
                     className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                       location.pathname === "/"
-                        ? "text-blue-700 bg-gradient-to-r from-blue-100 to-blue-50"
-                        : "text-slate-700 hover:text-blue-700 hover:bg-slate-100"
+                        ? "text-emerald-700 bg-gradient-to-r from-emerald-100 to-cyan-50"
+                        : "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50"
                     }`}
                   >
                     🏠 Home
@@ -302,15 +313,15 @@ const Layout = ({ children }) => {
                         "text-slate-700 hover:text-orange-700 hover:bg-orange-50";
                     } else if (isHouseKeeping) {
                       activeColors =
-                        "text-emerald-700 bg-gradient-to-r from-emerald-100 to-cyan-50";
-                      hoverColors =
-                        "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50";
-                    } else {
-                      // Default blue theme
-                      activeColors =
                         "text-blue-700 bg-gradient-to-r from-blue-100 to-blue-50";
                       hoverColors =
                         "text-slate-700 hover:text-blue-700 hover:bg-slate-100";
+                    } else {
+                      // Default blue theme
+                      activeColors = activeColors =
+                        "text-emerald-700 bg-gradient-to-r from-emerald-100 to-cyan-50";
+                      hoverColors =
+                        "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50";
                     }
 
                     return (
@@ -341,11 +352,21 @@ const Layout = ({ children }) => {
 
       {/* Footer */}
       <footer className="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 text-white relative overflow-hidden">
-        {/* Background decorative elements */}
+        {/* Enhanced background decorative overlays for more depth */}
         <div className="absolute inset-0">
+          {/* Existing blurred circles */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/8 rounded-full blur-3xl transform rotate-12"></div>
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/8 rounded-full blur-3xl transform -rotate-12"></div>
           <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-green-500/5 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+          {/* New subtle radial gradient overlay for footer depth */}
+          <div
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at 80% 80%, rgba(234,179,8,0.08) 0%, transparent 70%), radial-gradient(ellipse at 20% 20%, rgba(37,99,235,0.06) 0%, transparent 70%)",
+              mixBlendMode: "soft-light",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -709,7 +730,7 @@ const Layout = ({ children }) => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                              d="M5.05 4.05a7 7 0 119.9 9.9L10 6.343l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -920,8 +941,8 @@ const Layout = ({ children }) => {
               : location.pathname === "/projects"
               ? "bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 focus:ring-orange-300"
               : location.pathname === "/housekeeping"
-              ? "bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-600 hover:to-cyan-700 focus:ring-emerald-300"
-              : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 focus:ring-blue-300"
+              ? "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 focus:ring-blue-300"
+              : "bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-600 hover:to-cyan-700 focus:ring-emerald-300"
           }`}
           title="Scroll to top"
           aria-label="Scroll to top of page"

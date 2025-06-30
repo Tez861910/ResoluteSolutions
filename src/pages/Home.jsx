@@ -329,7 +329,7 @@ const Home = () => {
         title="Ready to Transform Your Business?"
         subtitle="Tell us about your project and let's discuss how Resolute Solutions can help you achieve your goals"
         serviceType="General Inquiry"
-        colorScheme="blue-purple"
+        colorScheme="emerald-cyan"
       />
     </div>
   );
