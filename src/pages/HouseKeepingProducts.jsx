@@ -520,22 +520,24 @@ const HouseKeepingProducts = () => {
             ].map((product, idx) => {
               // Skip the first 4 images, use the rest for products
               const imageList = [
-                "/GermiCheck.jpg",
-                "/MultiClean.jpg",
-                "/DeepClean.jpg",
-                "/Degreaser.jpg",
-                "/ScaleBusterPlus.jpg",
-                "/ScaleBuster.jpg",
-                "/CrystalDew.jpg",
-                "/Genteel.jpg",
-                "/GenteelSoft.jpg",
-                "/GenteelGel.jpg",
-                "/Bactiwash.jpg",
-                "/HandCleanzor.jpg",
-                "/DishDew.jpg",
-                "/DishWash.jpg",
+                "GermiCheck.jpg",
+                "MultiClean.jpg",
+                "DeepClean.jpg",
+                "Degreaser.jpg",
+                "ScaleBusterPlus.jpg",
+                "ScaleBuster.jpg",
+                "CrystalDew.jpg",
+                "Genteel.jpg",
+                "GenteelSoft.jpg",
+                "GenteelGel.jpg",
+                "Bactiwash.jpg",
+                "HandCleanzor.jpg",
+                "DishDew.jpg",
+                "DishWash.jpg",
               ];
-              const imageUrl = imageList[idx] || "/logo.png";
+              const imageUrl = `${import.meta.env.BASE_URL}${
+                imageList[idx] || "logo.png"
+              }`;
               return (
                 <div
                   key={idx}
