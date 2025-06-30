@@ -88,8 +88,8 @@ const Home = () => {
                 The Right Choice
               </p>
               <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-4xl leading-relaxed">
-                Transforming businesses through strategic innovation across four
-                specialized domains - making us the right choice for your
+                Transforming businesses through strategic innovation across
+                three specialized domains - making us the right choice for your
                 success
               </p>
               <div className="flex flex-col sm:flex-row gap-6">
@@ -150,7 +150,7 @@ const Home = () => {
               <span className="text-red-600 italic">The Right Choice</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Our commitment to excellence across four specialized domains sets
+              Our commitment to excellence across three specialized domains sets
               us apart in delivering transformational results
             </p>
           </div>
@@ -211,7 +211,7 @@ const Home = () => {
               Our Expertise
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Four Pillars of Excellence
+              Three Pillars of Excellence
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Specialized domains where we drive transformation and deliver
@@ -219,7 +219,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {verticals.map((vertical) => (
               <div
                 key={vertical.path}
