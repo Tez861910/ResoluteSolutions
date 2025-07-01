@@ -103,10 +103,16 @@ const ProjectManagement = () => {
               <br />
               <span className="text-white">Management</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-4xl leading-relaxed">
+            <p className="text-xl md:text-2xl mb-6 text-slate-200 max-w-4xl leading-relaxed">
               Complete project orchestration ensuring seamless execution from
               initial concept through successful completion with expert
               leadership and proven methodologies.
+            </p>
+            <p className="text-lg md:text-xl mb-12 text-orange-200 max-w-3xl leading-relaxed font-semibold">
+              <span className="block">
+                Specialised in the manufacturing of Human and Animal Health
+                Pharmaceutical products, Feed Plants, Chemicals among others.
+              </span>
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <a
@@ -138,14 +144,20 @@ const ProjectManagement = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block bg-orange-100 text-orange-800 px-6 py-2 rounded-full text-sm font-semibold mb-6">
-              Our Services
+              Our Project Management Specialization
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Project Excellence
+              Project Excellence in Regulated Manufacturing
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive project management services that deliver results on
-              time, within budget, and exceeding expectations
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-4">
+              We are specialized in the manufacturing of Human and Animal Health
+              Pharmaceutical products, Feed Plants, Chemicals, and more. Our
+              project management services are tailored for highly regulated,
+              quality-driven industries.
+            </p>
+            <p className="text-base text-orange-700 max-w-2xl mx-auto leading-relaxed">
+              From initial planning to final delivery, we ensure compliance,
+              efficiency, and excellence at every stage of your project.
             </p>
           </div>
 
