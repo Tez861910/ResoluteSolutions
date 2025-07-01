@@ -132,10 +132,28 @@ const IngredientSourcingRiskAnalysis = () => {
               <br />
               <span className="text-white">& Risk Management</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-4xl leading-relaxed">
+            <p className="text-xl md:text-2xl mb-6 text-slate-200 max-w-4xl leading-relaxed">
               Comprehensive supply chain optimization combined with advanced
               risk management to ensure sustainable, reliable, and secure
               business operations.
+            </p>
+            <p className="text-lg md:text-xl mb-12 text-yellow-200 max-w-3xl leading-relaxed font-semibold">
+              <span className="block">
+                Specialised in sourcing ingredients required for Pharmaceutical,
+                Feed, Chemicals manufacturing processes such as:
+              </span>
+              <ul className="list-decimal list-inside mt-2 text-yellow-100 text-base font-normal">
+                <li>Active Pharma Ingredients (APIs)</li>
+                <li>Vitamins</li>
+                <li>Amino Acids</li>
+                <li>Minerals</li>
+                <li>Chelates</li>
+                <li>Toxin Binders</li>
+                <li>Halquinol</li>
+                <li>Speciality Chemicals</li>
+                <li>Medicated and Non Medicated Additives</li>
+                <li>Packaging Materials</li>
+              </ul>
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <a
@@ -169,12 +187,18 @@ const IngredientSourcingRiskAnalysis = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Integrated Supply Chain & Risk Solutions
+              Specialized Ingredient Sourcing for Regulated Industries
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our combined approach to ingredient sourcing and risk management
-              provides a comprehensive framework for supply chain excellence,
-              ensuring both operational efficiency and business security.
+            <p className="text-xl text-yellow-800 max-w-4xl mx-auto leading-relaxed mb-4">
+              We specialize in sourcing ingredients for Pharmaceutical, Feed,
+              and Chemicals manufacturing, including APIs, vitamins, amino
+              acids, minerals, chelates, toxin binders, halquinol, specialty
+              chemicals, additives, and packaging materials.
+            </p>
+            <p className="text-base text-gray-700 max-w-2xl mx-auto leading-relaxed">
+              Our integrated approach combines supply chain optimization and
+              risk management to ensure quality, compliance, and reliability for
+              your business.
             </p>
           </div>
 
