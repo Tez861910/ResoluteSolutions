@@ -129,11 +129,11 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 scroll-smooth relative">
+    <div className="min-h-screen bg-slate-50 scroll-smooth relative no-select">
       {/* Subtle background gradient overlay for depth */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0 no-select"
         style={{
           background:
             "radial-gradient(ellipse at 60% 0%, rgba(37,99,235,0.08) 0%, transparent 60%), radial-gradient(ellipse at 0% 100%, rgba(124,58,237,0.07) 0%, transparent 70%), linear-gradient(120deg, rgba(16,185,129,0.04) 0%, rgba(234,179,8,0.03) 100%)",

@@ -123,7 +123,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       outDir: "dist",
       assetsDir: "assets",
-      sourcemap: true,
+      sourcemap: false, // Disable source maps for production security
 
       // Modern browser targets for optimal performance
       target: [
@@ -135,11 +135,28 @@ export default defineConfig(({ command, mode }) => {
         "ios12",
       ],
 
-      // Build optimization
-      minify: "esbuild",
+      // Enhanced build optimization with Terser
+      minify: "terser",
       cssMinify: true,
       reportCompressedSize: true,
       chunkSizeWarningLimit: 1000,
+
+      // Terser options for enhanced obfuscation
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove all console.log statements
+          drop_debugger: true, // Remove debugger statements
+          pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'], // Remove specific console methods
+          passes: 3, // Multiple compression passes
+        },
+        mangle: {
+          toplevel: true, // Mangle top-level variable names
+          safari10: true, // Ensure Safari 10 compatibility
+        },
+        format: {
+          comments: false, // Remove all comments
+        },
+      },
 
       // Advanced bundling configuration
       rollupOptions: {
