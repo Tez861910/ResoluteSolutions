@@ -172,10 +172,41 @@ class SecurityManager {
   }
 
   // Prevent the page from being loaded in an iframe
+  // Enhanced frame-busting protection
   preventFraming() {
+    // Multiple frame-busting techniques for better protection
+    
+    // Method 1: Basic frame busting
     if (window.top !== window.self) {
       window.top.location = window.self.location;
     }
+    
+    // Method 2: Check for parent frames
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.location = window.location;
+      }
+    } catch {
+      // If we can't access parent, we might be in a cross-origin frame
+      window.location.reload();
+    }
+    
+    // Method 3: Defensive frame busting
+    if (document.getElementsByTagName('frame').length > 0 || 
+        document.getElementsByTagName('iframe').length > 0) {
+      console.warn('Potential frame injection detected');
+    }
+    
+    // Method 4: Monitor for frame changes
+    setInterval(() => {
+      if (window.top !== window.self) {
+        try {
+          window.top.location = window.self.location;
+        } catch {
+          window.location.reload();
+        }
+      }
+    }, 1000);
   }
 
   // Add fake properties to confuse scrapers
