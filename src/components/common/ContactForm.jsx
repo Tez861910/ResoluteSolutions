@@ -13,10 +13,8 @@ const ContactForm = ({
     phone: "",
     company: "",
     serviceInterest: serviceType,
-    projectType: "",
-    budgetRange: "",
-    timeline: "",
     message: "",
+    referralSource: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -137,13 +135,11 @@ const ContactForm = ({
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        phone: formData.phone || "Not provided",
-        company: formData.company || "Not provided",
+        phone: formData.phone,
+        company: formData.company,
         service_interest: formData.serviceInterest,
-        project_type: formData.projectType || "Not specified",
-        budget_range: formData.budgetRange || "Not specified",
-        timeline: formData.timeline || "Not specified",
         message: formData.message,
+        referral_source: formData.referralSource || "Not specified",
         to_email:
           import.meta.env.VITE_CONTACT_EMAIL || "resolutesolutions@hotmail.com",
         website_url:
@@ -166,10 +162,8 @@ const ContactForm = ({
         phone: "",
         company: "",
         serviceInterest: serviceType,
-        projectType: "",
-        budgetRange: "",
-        timeline: "",
         message: "",
+        referralSource: "",
       });
 
       // Show success notification and auto-hide after 5 seconds
@@ -321,12 +315,13 @@ const ContactForm = ({
                   htmlFor="phone"
                   className="block text-sm font-semibold text-slate-700 mb-2"
                 >
-                  Phone Number
+                  Phone Number *
                 </label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
+                  required
                   value={formData.phone}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
@@ -339,12 +334,13 @@ const ContactForm = ({
                   htmlFor="company"
                   className="block text-sm font-semibold text-slate-700 mb-2"
                 >
-                  Company Name
+                  Company Name *
                 </label>
                 <input
                   type="text"
                   id="company"
                   name="company"
+                  required
                   value={formData.company}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
@@ -353,77 +349,30 @@ const ContactForm = ({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label
-                  htmlFor="projectType"
-                  className="block text-sm font-semibold text-slate-700 mb-2"
-                >
-                  Project Type
-                </label>
-                <select
-                  id="projectType"
-                  name="projectType"
-                  value={formData.projectType}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
-                >
-                  <option value="">Select project type</option>
-                  <option value="consultation">Initial Consultation</option>
-                  <option value="assessment">Risk Assessment</option>
-                  <option value="optimization">Process Optimization</option>
-                  <option value="implementation">Full Implementation</option>
-                  <option value="ongoing">Ongoing Support</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="timeline"
-                  className="block text-sm font-semibold text-slate-700 mb-2"
-                >
-                  Timeline
-                </label>
-                <select
-                  id="timeline"
-                  name="timeline"
-                  value={formData.timeline}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
-                >
-                  <option value="">Select timeline</option>
-                  <option value="immediate">Immediate (Within 1 month)</option>
-                  <option value="short">Short-term (1-3 months)</option>
-                  <option value="medium">Medium-term (3-6 months)</option>
-                  <option value="long">Long-term (6+ months)</option>
-                  <option value="flexible">Flexible</option>
-                </select>
-              </div>
-            </div>
-
             <div>
               <label
-                htmlFor="budgetRange"
+                htmlFor="referralSource"
                 className="block text-sm font-semibold text-slate-700 mb-2"
               >
-                Budget Range (Optional)
+                How did you hear about us?
               </label>
               <select
-                id="budgetRange"
-                name="budgetRange"
-                value={formData.budgetRange}
+                id="referralSource"
+                name="referralSource"
+                value={formData.referralSource}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200`}
               >
-                <option value="">Select budget range</option>
-                <option value="under-1l">Under ₹1 Lakh</option>
-                <option value="1l-5l">₹1-5 Lakhs</option>
-                <option value="5l-10l">₹5-10 Lakhs</option>
-                <option value="10l-25l">₹10-25 Lakhs</option>
-                <option value="25l-50l">₹25-50 Lakhs</option>
-                <option value="50l+">₹50+ Lakhs</option>
-                <option value="discuss">Prefer to discuss</option>
+                <option value="">Please select</option>
+                <option value="google-search">Google Search</option>
+                <option value="social-media">Social Media</option>
+                <option value="referral">Referral from friend/colleague</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="business-network">Business Network</option>
+                <option value="trade-show">Trade Show/Event</option>
+                <option value="website">Company Website</option>
+                <option value="advertisement">Advertisement</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
@@ -432,7 +381,7 @@ const ContactForm = ({
                 htmlFor="message"
                 className="block text-sm font-semibold text-slate-700 mb-2"
               >
-                Project Details *
+                Message *
               </label>
               <textarea
                 id="message"
@@ -442,7 +391,7 @@ const ContactForm = ({
                 value={formData.message}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 rounded-xl border border-slate-300 ${colors.focusRing} focus:border-transparent focus:outline-none transition-all duration-200 resize-none`}
-                placeholder="Please describe your project requirements, challenges you're facing, and how we can help you achieve your goals..."
+                placeholder="Please describe your requirements, challenges you're facing, and how we can help you achieve your goals..."
               ></textarea>
             </div>
 

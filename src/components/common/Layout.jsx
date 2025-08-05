@@ -81,9 +81,9 @@ const Layout = ({ children }) => {
 
   const verticals = [
     {
-      name: "Ingredient Sourcing & Risk Management Analysis",
+      name: "Risk Management Analysis",
       path: "/sourcing-risk",
-      icon: "🌾📊",
+      icon: "📊⚠️",
     },
     { name: "Project Management", path: "/projects", icon: "🎯" },
     { name: "House Keeping Products", path: "/housekeeping", icon: "🏠" },
@@ -185,8 +185,7 @@ const Layout = ({ children }) => {
               </Link>
               {verticals.map((vertical) => {
                 const isSourcingRisk =
-                  vertical.name ===
-                  "Ingredient Sourcing & Risk Management Analysis";
+                  vertical.name === "Risk Management Analysis";
                 const isProjectManagement =
                   vertical.name === "Project Management";
                 const isHouseKeeping =

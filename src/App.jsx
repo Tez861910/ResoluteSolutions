@@ -2,7 +2,7 @@
 // Professional website showcasing our core business verticals
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
+import { Layout } from "./components/common";
 import Home from "./pages/Home";
 import IngredientSourcingRiskAnalysis from "./pages/IngredientSourcingRiskAnalysis";
 import ProjectManagement from "./pages/ProjectManagement";

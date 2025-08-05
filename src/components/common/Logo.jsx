@@ -1,5 +1,5 @@
 // Logo component that uses the actual brand logo
-import logoImage from "../assets/resolute-solutions-high-resolution-logo-transparent-2.png";
+import logoImage from "../../assets/resolute-solutions-high-resolution-logo-transparent-2.png";
 
 const Logo = ({
   size = "medium",

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import ContactModal from "../components/ContactModal";
+import ContactModal from "../components/common/ContactModal";
 
 const ProjectManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const services = [
     {
       title: "Project Planning",
@@ -49,7 +50,6 @@ const ProjectManagement = () => {
       ],
     },
   ];
-
   const methodologies = [
     {
       icon: "⚡",
@@ -76,7 +76,6 @@ const ProjectManagement = () => {
         "Value-focused approach that minimizes waste and maximizes efficiency in project delivery.",
     },
   ];
-
   const benefits = [
     "On-time project delivery with quality results",
     "Optimal resource allocation and cost management",
@@ -85,7 +84,6 @@ const ProjectManagement = () => {
     "Scalable processes for projects of any size",
     "Continuous improvement and lessons learned",
   ];
-
   return (
     <div>
       {/* Hero Section */}
@@ -132,7 +130,6 @@ const ProjectManagement = () => {
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
-
       {/* Services Section */}
       <section
         id="services"
@@ -160,7 +157,6 @@ const ProjectManagement = () => {
               efficiency, and excellence at every stage of your project.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div
@@ -192,7 +188,6 @@ const ProjectManagement = () => {
                     <p className="text-slate-600 mb-6 leading-relaxed">
                       {service.description}
                     </p>
-
                     <div className="grid grid-cols-1 gap-3 mb-6">
                       {service.features.map((feature, idx) => (
                         <div
@@ -211,7 +206,6 @@ const ProjectManagement = () => {
           </div>
         </div>
       </section>
-
       {/* Methodologies Section */}
       <section className="py-24 relative bg-white overflow-hidden">
         {/* Blurred Gradient Overlay */}
@@ -230,7 +224,6 @@ const ProjectManagement = () => {
               organizational culture
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {methodologies.map((methodology, index) => (
               <div key={index} className="text-center group">
@@ -250,7 +243,6 @@ const ProjectManagement = () => {
           </div>
         </div>
       </section>
-
       {/* Benefits Section */}
       <section
         id="success"
@@ -322,7 +314,6 @@ const ProjectManagement = () => {
           </div>
         </div>
       </section>
-
       {/* Process Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -338,7 +329,6 @@ const ProjectManagement = () => {
               consistent delivery of exceptional results
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {[
               {
@@ -389,7 +379,6 @@ const ProjectManagement = () => {
           </div>
         </div>
       </section>
-
       {/* Contact Modal */}
       <ContactModal
         isOpen={isModalOpen}
@@ -402,5 +391,4 @@ const ProjectManagement = () => {
     </div>
   );
 };
-
 export default ProjectManagement;
