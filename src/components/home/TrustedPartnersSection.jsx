@@ -166,33 +166,6 @@ const TrustedPartnersSection = () => {
     },
   ];
 
-  const stats = [
-    {
-      number: "20+",
-      label: "Trusted Partners",
-      icon: "🤝",
-      color: "from-emerald-500 to-cyan-500",
-    },
-    {
-      number: "50+",
-      label: "Successful Projects",
-      icon: "🎯",
-      color: "from-blue-500 to-purple-500",
-    },
-    {
-      number: "5+",
-      label: "Years Experience",
-      icon: "📈",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      number: "100%",
-      label: "Client Satisfaction",
-      icon: "⭐",
-      color: "from-yellow-500 to-orange-500",
-    },
-  ];
-
   return (
     <section className="relative py-24 bg-white overflow-hidden">
       {/* Subtle background gradient overlay - Matching other sections */}
@@ -260,11 +233,9 @@ const TrustedPartnersSection = () => {
               }}
               onMouseEnter={() => {
                 isPausedRef.current = true;
-                document.body.style.overflow = "hidden";
               }}
               onMouseLeave={() => {
                 isPausedRef.current = false;
-                document.body.style.overflow = "unset";
               }}
             >
               {/* Render partners twice for infinite scroll effect */}
@@ -319,46 +290,6 @@ const TrustedPartnersSection = () => {
               </span>
             </div>
           </div>
-        </div>
-
-        {/* Stats Section - Enhanced Glass Design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="group relative bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-emerald-300/20 transition-all duration-500 p-8 border border-emerald-200/30 hover:border-emerald-300/50 transform hover:-translate-y-3 text-center overflow-hidden"
-            >
-              {/* Glass effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 via-white/40 to-cyan-50/60 pointer-events-none"></div>
-
-              <div className="relative z-10">
-                <div className="relative mb-6">
-                  <div
-                    className={`w-20 h-20 bg-gradient-to-br ${stat.color} rounded-3xl flex items-center justify-center text-3xl mx-auto shadow-2xl group-hover:scale-125 transition-transform duration-300 backdrop-blur-sm border border-white/30`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl"></div>
-                    <span className="relative z-10 drop-shadow-lg">
-                      {stat.icon}
-                    </span>
-                  </div>
-                </div>
-                <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-3 group-hover:text-emerald-700 transition-colors drop-shadow-sm">
-                  {stat.number}
-                </div>
-                <div className="text-slate-700 font-semibold leading-relaxed mb-4">
-                  {stat.label}
-                </div>
-                <div className="mt-4">
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full"></span>
-                    <span className="text-emerald-700 text-sm font-semibold bg-emerald-50/80 backdrop-blur-sm rounded-full px-3 py-1 border border-emerald-200/50">
-                      Verified
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

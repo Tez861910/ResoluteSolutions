@@ -80,6 +80,17 @@ const IngredientSourcingServices = () => {
         "Logistics Risk Assessment",
       ],
     },
+    {
+      title: "Compliance & Regulatory Risk",
+      description:
+        "Proactive management of regulatory compliance risks across pharmaceutical, feed, and chemical industries.",
+      features: [
+        "Regulatory Change Monitoring",
+        "Compliance Gap Analysis",
+        "Documentation Management",
+        "Audit Preparation Support",
+      ],
+    },
   ];
 
   return (
