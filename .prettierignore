@@ -1,0 +1,36 @@
+# Ignore files for prettier
+dist/
+build/
+node_modules/
+coverage/
+.env*
+*.log
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+*.min.js
+*.min.css
+
+# Generated files
+*.generated.*
+*.d.ts
+
+# Public assets that shouldn't be formatted
+public/
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Configuration files that might have specific formatting
+.github/
+.vscode/

@@ -87,6 +87,7 @@ export default defineConfig(({ command, mode }) => {
         ),
         "@pages": fileURLToPath(new URL("./src/pages", import.meta.url)),
         "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
+        "@utils": fileURLToPath(new URL("./src/utils", import.meta.url)),
       },
     },
 
