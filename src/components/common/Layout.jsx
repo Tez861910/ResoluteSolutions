@@ -81,9 +81,9 @@ const Layout = ({ children }) => {
 
   const verticals = [
     {
-      name: "Risk Management Analysis",
+      name: "Ingredient Sourcing & Risk Management Analysis",
       path: "/sourcing-risk",
-      icon: "📊⚠️",
+      icon: "🌾📊",
     },
     { name: "Project Management", path: "/projects", icon: "🎯" },
     { name: "House Keeping Products", path: "/housekeeping", icon: "🏠" },
